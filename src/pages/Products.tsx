@@ -6,6 +6,8 @@ import {
 } from "../store/productsSlice";
 import { useParams } from "react-router-dom";
 import Product from "../components/ecommerce/Product";
+import Loading from "../components/feedback/Loading";
+import RenderList from "../components/common/RenderList";
 
 const Products = () => {
   const dispatch = useAppDispatch();
@@ -24,11 +26,16 @@ const Products = () => {
 
   return (
     <div>
-      {records.length > 0 ? (
-        records.map((record) => <Product key={record.title} {...record} />)
-      ) : (
-        <p>There are no products right now.</p>
-      )}
+      <Loading status={loading} error={error}>
+        <RenderList
+          records={records}
+          handleRenderList={(record) => (
+            <Product key={record.title} {...record} />
+          )}
+        />
+
+        {records.length > 0 ? "" : <p>There are no products right now.</p>}
+      </Loading>
     </div>
   );
 };
