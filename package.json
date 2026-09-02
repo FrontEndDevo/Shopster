@@ -18,8 +18,7 @@
     "react-redux": "^9.3.0",
     "react-router-dom": "^7.18.3",
     "redux-persist": "^6.0.0",
-    "tailwindcss": "^4.3.3",
-    "vite-tsconfig-paths": "^6.1.1"
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
