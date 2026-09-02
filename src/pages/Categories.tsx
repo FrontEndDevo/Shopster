@@ -10,21 +10,22 @@ const Categories = () => {
   const { records, loading, error } = useAppSelector(
     (state) => state.categories,
   );
+  console.log(records);
 
   useEffect(() => {
-    // Check first if I have the categories already or not, not to send a request again fetch them again.
+    // Check first if I have the categories already or not, not to send a request again.
     if (records.length === 0) {
       dispatch(actGetCategories());
     }
   }, [dispatch, records]);
 
   return (
-    <div>
+    <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 xl:grid-cols-4 gap-8 my-6">
       <Loading status={loading} error={error}>
         <RenderList
           records={records}
           handleRenderList={(record) => (
-            <Category key={record.title} {...record} />
+            <Category key={record.id} {...record} />
           )}
         />
 
