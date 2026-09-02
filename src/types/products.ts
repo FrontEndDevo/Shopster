@@ -5,5 +5,6 @@ export type TProducts = {
   description: string;
   imageCover: string;
   price: number;
+  priceAfterDiscount?: number;
   quantity?: number;
 };
