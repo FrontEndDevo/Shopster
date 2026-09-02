@@ -6,6 +6,7 @@ import About from "@/pages/About";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import Cart from "@/pages/Cart";
+import NotFound from "@/pages/NotFound";
 const AppRouter = () => {
   return (
     <Routes>
@@ -16,6 +17,7 @@ const AppRouter = () => {
       <Route path="about" element={<About />} />
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
