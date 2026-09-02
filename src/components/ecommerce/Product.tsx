@@ -3,7 +3,7 @@ import type { TProducts } from "@/types/products";
 import { useAppDispatch } from "@/store/hooks";
 import { addToCart } from "@/store/cart/cartSlice";
 
-const Product = ({ id, title, img, price }: TProducts) => {
+const Product = ({ id, title, imageCover, price, quantity }: TProducts) => {
   const dispatch = useAppDispatch();
 
   const handleAddToCart = () => {
@@ -12,9 +12,10 @@ const Product = ({ id, title, img, price }: TProducts) => {
 
   return (
     <Link to="/">
-      <img src={img} alt={title} />
+      <img src={imageCover} alt={title} />
       <h2>{title}</h2>
       <p>{price}</p>
+      <span>{quantity}</span>
       <button onClick={handleAddToCart}>Add to cart</button>
     </Link>
   );
