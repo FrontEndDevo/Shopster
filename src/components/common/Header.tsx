@@ -4,7 +4,7 @@ import Shopster from "@/assets/Shopster.svg?react";
 const Header = () => {
   return (
     <header>
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center">
         <div className="flex justify-center items-center flex-col">
           <Shopster className="w-10 h-10 rotate-3" />
           <h1 className="italic text-xl font-semibold text-mist-900">
