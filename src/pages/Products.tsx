@@ -1,10 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import {
-  actGetProductsByCatPrefix,
-  productsCleanUp,
-} from "@/store/productsSlice";
-import { useParams } from "react-router-dom";
+import { actGetProducts, productsCleanUp } from "@/store/productsSlice";
 import Product from "@/components/ecommerce/Product";
 import Loading from "@/components/feedback/Loading";
 import RenderList from "@/components/common/RenderList";
@@ -13,25 +9,21 @@ const Products = () => {
   const dispatch = useAppDispatch();
   const { records, loading, error } = useAppSelector((state) => state.products);
 
-  const params = useParams();
-
   useEffect(() => {
-    if (params.prefix && typeof params.prefix === "string") {
-      dispatch(actGetProductsByCatPrefix(params.prefix));
-    }
+    dispatch(actGetProducts());
+
+    // Clean up the products state when the component unmounts
     return () => {
       dispatch(productsCleanUp());
     };
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 xl:grid-cols-4 gap-8 my-6">
       <Loading status={loading} error={error}>
         <RenderList
           records={records}
-          handleRenderList={(record) => (
-            <Product key={record.title} {...record} />
-          )}
+          handleRenderList={(record) => <Product key={record.id} {...record} />}
         />
 
         {records.length > 0 ? "" : <p>There are no products right now.</p>}
