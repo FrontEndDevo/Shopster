@@ -1,12 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ShoppingCart from "@/components/ecommerce/ShoppingCart";
 import Shopster from "@/assets/Shopster.svg?react";
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <header>
       <div className="flex justify-between items-center">
         <div className="flex justify-center items-center flex-col">
-          <Shopster className="w-10 h-10 rotate-3" />
+          <Shopster
+            className="w-10 h-10 rotate-3"
+            onClick={() => navigate("/")}
+          />
           <h1 className="italic text-xl font-semibold text-mist-900">
             Shopster
           </h1>
