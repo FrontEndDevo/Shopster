@@ -1,8 +1,9 @@
 export type TProducts = {
   id: number;
   title: string;
-  cat_prefix: string;
-  img: string;
-  price: string;
+  slug?: string;
+  description: string;
+  imageCover: string;
+  price: number;
   quantity?: number;
 };
