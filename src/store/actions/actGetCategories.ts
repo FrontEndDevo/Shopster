@@ -10,7 +10,12 @@ const actGetCategories = createAsyncThunk(
     try {
       const response = await axios.get<TCategory[]>("");
 
-      return response.data;
+      // return response.data;
+      return [
+        { title: "men", img: "" },
+        { title: "women", img: "" },
+        { title: "kids", img: "" },
+      ];
     } catch (error) {
       if (axios.isAxiosError(error)) {
         return rejectWithValue(error.response?.data.message || error.message);
