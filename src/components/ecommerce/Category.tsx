@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import type { TCategory } from "../../types/category";
+import type { TCategory } from "@/types/category";
 
 const Category = ({ title, img }: TCategory) => {
   return (

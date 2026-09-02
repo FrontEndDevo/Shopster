@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import type { TProducts } from "../../types/products";
-import { useAppDispatch } from "../../store/hooks";
-import { addToCart } from "../../store/cart/cartSlice";
+import type { TProducts } from "@/types/products";
+import { useAppDispatch } from "@/store/hooks";
+import { addToCart } from "@/store/cart/cartSlice";
 
 const Product = ({ id, title, img, price }: TProducts) => {
   const dispatch = useAppDispatch();

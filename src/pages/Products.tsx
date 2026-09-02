@@ -1,13 +1,13 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import {
   actGetProductsByCatPrefix,
   productsCleanUp,
-} from "../store/productsSlice";
+} from "@/store/productsSlice";
 import { useParams } from "react-router-dom";
-import Product from "../components/ecommerce/Product";
-import Loading from "../components/feedback/Loading";
-import RenderList from "../components/common/RenderList";
+import Product from "@/components/ecommerce/Product";
+import Loading from "@/components/feedback/Loading";
+import RenderList from "@/components/common/RenderList";
 
 const Products = () => {
   const dispatch = useAppDispatch();

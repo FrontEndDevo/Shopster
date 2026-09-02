@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "../pages/Home";
-import Categories from "../pages/Categories";
-import Products from "../pages/Products";
-import About from "../pages/About";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
+import Home from "@/pages/Home";
+import Categories from "@/pages/Categories";
+import Products from "@/pages/Products";
+import About from "@/pages/About";
+import Login from "@/pages/Login";
+import Register from "@/pages/Register";
 const AppRouter = () => {
   return (
     <Routes>

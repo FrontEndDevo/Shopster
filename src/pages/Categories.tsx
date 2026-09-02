@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { actGetCategories } from "../store/categoriesSlice";
-import Category from "../components/ecommerce/Category";
-import Loading from "../components/feedback/Loading";
-import RenderList from "../components/common/RenderList";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { actGetCategories } from "@/store/categoriesSlice";
+import Category from "@/components/ecommerce/Category";
+import Loading from "@/components/feedback/Loading";
+import RenderList from "@/components/common/RenderList";
 
 const Categories = () => {
   const dispatch = useAppDispatch();

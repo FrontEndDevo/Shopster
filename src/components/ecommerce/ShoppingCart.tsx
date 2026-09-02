@@ -1,5 +1,5 @@
-import { getTotalCartQuantitySelector } from "../../store/cart/cartSlice";
-import { useAppSelector } from "../../store/hooks";
+import { getTotalCartQuantitySelector } from "@/store/cart/cartSlice";
+import { useAppSelector } from "@/store/hooks";
 
 const ShoppingCart = () => {
   const totalQuantity = useAppSelector(getTotalCartQuantitySelector);

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import ShoppingCart from "../ecommerce/ShoppingCart";
+import ShoppingCart from "@/components/ecommerce/ShoppingCart";
 
 const Header = () => {
   return (

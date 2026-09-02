@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { TProducts } from "../../types/products";
+import type { TProducts } from "@/types/products";
 import { getTotalCartQuantitySelector } from "../selectors";
 
 interface ICartState {
