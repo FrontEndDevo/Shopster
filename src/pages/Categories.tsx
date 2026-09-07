@@ -1,23 +1,11 @@
-import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { actGetCategories } from "@/store/categoriesSlice";
 import Category from "@/components/ecommerce/Category";
 import Loading from "@/components/feedback/Loading";
 import RenderList from "@/components/common/RenderList";
 import Heading from "@/components/common/Heading";
+import { useCategories } from "@/hooks";
 
 const Categories = () => {
-  const dispatch = useAppDispatch();
-  const { records, loading, error } = useAppSelector(
-    (state) => state.categories,
-  );
-
-  useEffect(() => {
-    // Check first if I have the categories already or not, not to send a request again.
-    if (records.length === 0) {
-      dispatch(actGetCategories());
-    }
-  }, [dispatch, records]);
+  const { records, loading, error } = useCategories();
 
   return (
     <>
