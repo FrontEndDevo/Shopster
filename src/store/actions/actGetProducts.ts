@@ -1,12 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import type { TProducts } from "@/types/products";
+import type { TProductsResponse } from "@/types/products";
 
 const API_PRODUCTS_URL = import.meta.env.VITE_API_PRODUCTS_URL;
-
-type TProductsResponse = {
-  data: TProducts[];
-};
 
 const actGetProducts = createAsyncThunk(
   "products/actGetProducts",
