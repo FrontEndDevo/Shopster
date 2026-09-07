@@ -2,28 +2,10 @@ import Heading from "@/components/common/Heading";
 import CartItemList from "@/components/ecommerce/CartItem/CartItemList";
 import CartTotalPrice from "@/components/ecommerce/CartItem/CartTotalPrice";
 import Loading from "@/components/feedback/Loading";
-import { actGetCartProductsByIDs, clearCart } from "@/store/cart/cartSlice";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { useEffect } from "react";
+import { useCart } from "@/hooks";
 
 const Cart = () => {
-  const dispatch = useAppDispatch();
-  const { items, productsWithFullInfo, loading, error } = useAppSelector(
-    (state) => state.cart,
-  );
-  useEffect(() => {
-    dispatch(actGetCartProductsByIDs());
-
-    return () => {
-      dispatch(clearCart());
-    };
-  }, [dispatch]);
-
-  const products = productsWithFullInfo.map((product) => ({
-    ...product,
-    amount: items[product.id],
-  }));
-
+  const { products, loading, error } = useCart();
   return (
     <>
       <Heading title="Your cart" />
