@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import actGetCategories from "./actions/actGetCategories";
-import type { TCategory } from "@/types/category.types";
-import type { TLoading } from "@/types";
+import { isString, type TCategory, type TLoading } from "@/types/";
 type categoriesState = {
   records: TCategory[];
   loading: TLoading;
@@ -31,9 +30,7 @@ const categoriesSlice = createSlice({
     });
     builder.addCase(actGetCategories.rejected, (state, action) => {
       state.loading = "failed";
-      if (action.payload && typeof action.payload === "string") {
-        state.error = action.payload;
-      }
+      if (isString(action.payload)) state.error = action.payload;
     });
   },
 });
