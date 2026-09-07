@@ -4,3 +4,7 @@ export type TCategory = {
   slug?: string;
   image: string;
 };
+
+export type TCategoryResponse = {
+  data: TCategory[];
+};
