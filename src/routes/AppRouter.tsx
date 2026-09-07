@@ -7,11 +7,13 @@ import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import Cart from "@/pages/Cart";
 import NotFound from "@/pages/NotFound";
+import Wishlist from "@/pages/Wishlist";
 const AppRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/wishlist" element={<Wishlist />} />
       <Route path="categories" element={<Categories />} />
       <Route path="products" element={<Products />} />
       <Route path="about" element={<About />} />
