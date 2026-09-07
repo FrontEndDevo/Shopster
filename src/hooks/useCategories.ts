@@ -15,7 +15,7 @@ function useCategories() {
       promise.abort();
       dispatch(clearCategories());
     };
-  }, [dispatch, records]);
+  }, [dispatch]);
 
   return { records, loading, error };
 }
