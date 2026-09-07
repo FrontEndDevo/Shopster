@@ -1,7 +1,7 @@
 import axios from "axios";
 import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import type { TProductsResponse } from "@/types/products";
+import type { TProductsResponse } from "@/types";
 
 const API_PRODUCTS_URL = import.meta.env.VITE_API_PRODUCTS_URL;
 

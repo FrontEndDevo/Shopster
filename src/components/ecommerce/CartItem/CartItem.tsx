@@ -1,13 +1,13 @@
-import type { TProducts } from "@/types/products";
-import CalcProductPriceAfterDiscount from "@/utils/CalcProductPriceAfterDiscount";
-import Remove from "@/assets/remove.svg?react";
+import { memo } from "react";
 import { useAppDispatch } from "@/store/hooks";
+import CalcProductPriceAfterDiscount from "@/utils/CalcProductPriceAfterDiscount";
+import type { TProducts } from "@/types";
+import Remove from "@/assets/remove.svg?react";
 import {
   decrementQuantity,
   incrementQuantity,
   removeFromCart,
 } from "@/store/cart/cartSlice";
-import { memo } from "react";
 type TCartItemProps = TProducts;
 
 const CartItem = memo(

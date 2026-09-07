@@ -1,7 +1,7 @@
 import axios from "axios";
 import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import type { TProducts } from "@/types/products";
+import type { TProducts } from "@/types";
 
 const actGetProductsByCatPrefix = createAsyncThunk(
   "products/actGetProductsByCatPrefix",

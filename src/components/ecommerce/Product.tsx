@@ -1,9 +1,9 @@
-import type { TProducts } from "@/types/products";
+import { memo } from "react";
 import { useAppDispatch } from "@/store/hooks";
 import { addToCart } from "@/store/cart/cartSlice";
+import type { TProducts } from "@/types";
 import CalcProductPriceAfterDiscount from "@/utils/CalcProductPriceAfterDiscount";
 import FavoriteButton from "../feedback/FavoriteButton";
-import { memo } from "react";
 const Product = memo(
   ({
     id,

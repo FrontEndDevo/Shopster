@@ -1,7 +1,7 @@
 import axios from "axios";
 import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import type { TProductsResponse } from "@/types/products";
+import type { TProductsResponse } from "@/types";
 
 const WISHLISTAPI = import.meta.env.VITE_API_WISHLIST_URL;
 const USER_TOKEN = import.meta.env.VITE_DEFAULT_USER_TOKEN;

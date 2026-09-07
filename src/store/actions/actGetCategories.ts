@@ -1,7 +1,7 @@
 import axios from "axios";
 import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import type { TCategoryResponse } from "@/types/category";
+import type { TCategoryResponse } from "@/types/category.types";
 
 const API_CATEGORIES_URL = import.meta.env.VITE_API_CATEGORIES_URL;
 
