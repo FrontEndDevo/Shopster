@@ -1,25 +1,89 @@
+import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "@/pages/Home";
-import Categories from "@/pages/Categories";
-import Products from "@/pages/Products";
-import About from "@/pages/About";
-import Login from "@/pages/Login";
-import Register from "@/pages/Register";
-import Cart from "@/pages/Cart";
-import NotFound from "@/pages/NotFound";
-import Wishlist from "@/pages/Wishlist";
+const Home = lazy(() => import("@/pages/Home"));
+const Categories = lazy(() => import("@/pages/Categories"));
+const Products = lazy(() => import("@/pages/Products"));
+const Cart = lazy(() => import("@/pages/Cart"));
+const Wishlist = lazy(() => import("@/pages/Wishlist"));
+const About = lazy(() => import("@/pages/About"));
+const Login = lazy(() => import("@/pages/Login"));
+const Register = lazy(() => import("@/pages/Register"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/wishlist" element={<Wishlist />} />
-      <Route path="categories" element={<Categories />} />
-      <Route path="products" element={<Products />} />
-      <Route path="about" element={<About />} />
-      <Route path="login" element={<Login />} />
-      <Route path="register" element={<Register />} />
-      <Route path="*" element={<NotFound />} />
+      <Route
+        path="/"
+        element={
+          <Suspense fallback="Loading... please wait.">
+            <Home />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/cart"
+        element={
+          <Suspense fallback="Loading... please wait.">
+            <Cart />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/wishlist"
+        element={
+          <Suspense fallback="Loading... please wait.">
+            <Wishlist />
+          </Suspense>
+        }
+      />
+      <Route
+        path="categories"
+        element={
+          <Suspense fallback="Loading... please wait.">
+            <Categories />
+          </Suspense>
+        }
+      />
+      <Route
+        path="products"
+        element={
+          <Suspense fallback="Loading... please wait.">
+            <Products />
+          </Suspense>
+        }
+      />
+      <Route
+        path="about"
+        element={
+          <Suspense fallback="Loading... please wait.">
+            <About />
+          </Suspense>
+        }
+      />
+      <Route
+        path="login"
+        element={
+          <Suspense fallback="Loading... please wait.">
+            <Login />
+          </Suspense>
+        }
+      />
+      <Route
+        path="register"
+        element={
+          <Suspense fallback="Loading... please wait.">
+            <Register />
+          </Suspense>
+        }
+      />
+      <Route
+        path="*"
+        element={
+          <Suspense fallback="Loading... please wait.">
+            <NotFound />
+          </Suspense>
+        }
+      />
     </Routes>
   );
 };
