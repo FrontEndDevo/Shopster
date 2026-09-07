@@ -8,9 +8,10 @@ function useCart() {
     (state) => state.cart,
   );
   useEffect(() => {
-    dispatch(actGetCartProductsByIDs());
+    const promise = dispatch(actGetCartProductsByIDs());
 
     return () => {
+      promise.abort();
       dispatch(clearCart());
     };
   }, [dispatch]);

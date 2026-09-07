@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { actGetCategories } from "@/store/categoriesSlice";
+import { actGetCategories, clearCategories } from "@/store/categoriesSlice";
 
 function useCategories() {
   const dispatch = useAppDispatch();
@@ -9,10 +9,12 @@ function useCategories() {
   );
 
   useEffect(() => {
-    // Check first if I have the categories already or not, not to send a request again.
-    if (records.length === 0) {
-      dispatch(actGetCategories());
-    }
+    const promise = dispatch(actGetCategories());
+
+    return () => {
+      promise.abort();
+      dispatch(clearCategories());
+    };
   }, [dispatch, records]);
 
   return { records, loading, error };

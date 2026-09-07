@@ -8,10 +8,11 @@ function useProducts() {
   const { productsIds } = useAppSelector((state) => state.wishlist);
 
   useEffect(() => {
-    dispatch(actGetProducts());
+    const promise = dispatch(actGetProducts());
 
     // Clean up the products state when the component unmounts
     return () => {
+      promise.abort();
       dispatch(productsCleanUp());
     };
   }, [dispatch]);
