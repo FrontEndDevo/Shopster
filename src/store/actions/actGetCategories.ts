@@ -1,12 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import type { TCategory } from "@/types/category";
+import type { TCategoryResponse } from "@/types/category";
 
 const API_CATEGORIES_URL = import.meta.env.VITE_API_CATEGORIES_URL;
-
-type TCategoryResponse = {
-  data: TCategory[];
-};
 
 const actGetCategories = createAsyncThunk(
   "categories/actGetCategories",
