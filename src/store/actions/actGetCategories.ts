@@ -8,10 +8,12 @@ const API_CATEGORIES_URL = import.meta.env.VITE_API_CATEGORIES_URL;
 const actGetCategories = createAsyncThunk(
   "categories/actGetCategories",
   async (_, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
+    const { rejectWithValue, signal } = thunkAPI;
 
     try {
-      const response = await axios.get<TCategoryResponse>(API_CATEGORIES_URL);
+      const response = await axios.get<TCategoryResponse>(API_CATEGORIES_URL, {
+        signal,
+      });
       return response.data.data;
     } catch (error) {
       return rejectWithValue(AxiosErrorHandler(error));

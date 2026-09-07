@@ -9,7 +9,7 @@ const API_PRODUCTS = import.meta.env.VITE_API_PRODUCTS_URL;
 const actGetCartProductsByIDs = createAsyncThunk(
   "cart/actGetProductsByIDs",
   async (_, thunkAPI) => {
-    const { rejectWithValue, fulfillWithValue, getState } = thunkAPI;
+    const { rejectWithValue, fulfillWithValue, getState, signal } = thunkAPI;
     const { cart } = getState() as RootState;
 
     const itemsIDs = Object.keys(cart.items);
@@ -19,7 +19,7 @@ const actGetCartProductsByIDs = createAsyncThunk(
     try {
       // Prepare our promises:
       const requests = itemsIDs.map((id) =>
-        axios.get<TProductsResponse>(`${API_PRODUCTS}/${id}`),
+        axios.get<TProductsResponse>(`${API_PRODUCTS}/${id}`, { signal }),
       );
       // Send requests parallel:
       const responses = await Promise.all(requests);

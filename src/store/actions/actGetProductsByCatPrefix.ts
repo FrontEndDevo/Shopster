@@ -6,10 +6,10 @@ import type { TProducts } from "@/types/products";
 const actGetProductsByCatPrefix = createAsyncThunk(
   "products/actGetProductsByCatPrefix",
   async (prefix: string, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
+    const { rejectWithValue, signal } = thunkAPI;
 
     try {
-      const response = await axios.get<TProducts[]>("");
+      const response = await axios.get<TProducts[]>("", { signal });
 
       return response.data;
     } catch (error) {
