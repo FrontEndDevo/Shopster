@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import categories from "./categoriesSlice";
 import products from "./productsSlice";
 import cart from "./cart/cartSlice";
+import wishlist from "./wishlist/wishlistSlice";
 import {
   persistReducer,
   FLUSH,
@@ -39,6 +40,7 @@ const rootReducer = combineReducers({
   categories,
   products,
   cart,
+  wishlist,
 });
 
 const persistedReducer = persistReducer(rootPersistConfig, rootReducer);
