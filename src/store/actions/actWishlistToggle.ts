@@ -1,5 +1,6 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
 
 const USER_TOKEN = import.meta.env.VITE_DEFAULT_USER_TOKEN;
 
@@ -40,11 +41,7 @@ const actWishlistToggle = createAsyncThunk(
         if (response.data) return { id, type: "remove" };
       }
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        return rejectWithValue(error.response?.data.message || error.message);
-      } else {
-        return rejectWithValue("Unexepected error!");
-      }
+      return rejectWithValue(AxiosErrorHandler(error));
     }
   },
 );

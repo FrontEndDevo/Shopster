@@ -1,6 +1,7 @@
-import type { TProductsResponse } from "@/types/products";
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import type { TProductsResponse } from "@/types/products";
 
 const WISHLISTAPI = import.meta.env.VITE_API_WISHLIST_URL;
 const USER_TOKEN = import.meta.env.VITE_DEFAULT_USER_TOKEN;
@@ -19,11 +20,7 @@ const actGetWishlist = createAsyncThunk(
 
       return response.data.data;
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        return rejectWithValue(error.response?.data.message || error.message);
-      } else {
-        return rejectWithValue("Unexepected error!");
-      }
+      return rejectWithValue(AxiosErrorHandler(error));
     }
   },
 );

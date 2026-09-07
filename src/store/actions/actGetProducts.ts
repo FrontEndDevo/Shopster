@@ -1,5 +1,6 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { TProductsResponse } from "@/types/products";
 
 const API_PRODUCTS_URL = import.meta.env.VITE_API_PRODUCTS_URL;
@@ -13,11 +14,7 @@ const actGetProducts = createAsyncThunk(
 
       return response.data.data;
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        return rejectWithValue(error.response?.data.message || error.message);
-      } else {
-        return rejectWithValue("Unexepected error!");
-      }
+      return rejectWithValue(AxiosErrorHandler(error));
     }
   },
 );

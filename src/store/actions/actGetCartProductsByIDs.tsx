@@ -1,6 +1,7 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { RootState } from "../redux";
 import axios from "axios";
+import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { TProductsResponse } from "@/types/products";
 
 const API_PRODUCTS = import.meta.env.VITE_API_PRODUCTS_URL;
@@ -27,11 +28,7 @@ const actGetCartProductsByIDs = createAsyncThunk(
 
       return fulfillWithValue(products);
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        rejectWithValue(error.response?.data.message || error.message);
-      } else {
-        rejectWithValue("Unexpected error!, Please try again.");
-      }
+      return rejectWithValue(AxiosErrorHandler(error));
     }
   },
 );

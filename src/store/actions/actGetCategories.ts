@@ -1,5 +1,6 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { TCategoryResponse } from "@/types/category";
 
 const API_CATEGORIES_URL = import.meta.env.VITE_API_CATEGORIES_URL;
@@ -13,11 +14,7 @@ const actGetCategories = createAsyncThunk(
       const response = await axios.get<TCategoryResponse>(API_CATEGORIES_URL);
       return response.data.data;
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        return rejectWithValue(error.response?.data.message || error.message);
-      } else {
-        return rejectWithValue("Unexepected error!");
-      }
+      return rejectWithValue(AxiosErrorHandler(error));
     }
   },
 );
