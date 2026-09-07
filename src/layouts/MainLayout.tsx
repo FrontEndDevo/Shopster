@@ -6,9 +6,11 @@ import Footer from "@/components/common/Footer";
 
 const MainLayout = () => {
   return (
-    <main className="h-svh my-2 flex flex-col justify-between">
+    <main className="min-h-screen my-2 flex flex-col justify-between">
       <Header />
-      <AppRouter />
+      <div className="flex-1">
+        <AppRouter />
+      </div>
       <Footer />
     </main>
   );
