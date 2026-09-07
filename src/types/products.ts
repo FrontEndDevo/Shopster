@@ -7,4 +7,10 @@ export type TProducts = {
   price: number;
   priceAfterDiscount?: number;
   quantity?: number;
+  amount?: number;
+  isFavorite?: boolean;
+};
+
+export type TProductsResponse = {
+  data: TProducts[];
 };
