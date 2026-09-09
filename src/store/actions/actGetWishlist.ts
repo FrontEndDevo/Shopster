@@ -3,7 +3,7 @@ import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { TProductsResponse } from "@/types";
 
-const WISHLISTAPI = import.meta.env.VITE_API_WISHLIST_URL;
+const WISHLISTAPI = import.meta.env.VITE_ECOMMERCE_API;
 const USER_TOKEN = import.meta.env.VITE_DEFAULT_USER_TOKEN;
 
 const actGetWishlist = createAsyncThunk(
@@ -12,12 +12,15 @@ const actGetWishlist = createAsyncThunk(
     const { rejectWithValue, signal } = thunkAPI;
 
     try {
-      const response = await axios.get<TProductsResponse>(WISHLISTAPI, {
-        headers: {
-          token: USER_TOKEN,
+      const response = await axios.get<TProductsResponse>(
+        `${WISHLISTAPI}/wishlist`,
+        {
+          headers: {
+            token: USER_TOKEN,
+          },
+          signal,
         },
-        signal,
-      });
+      );
 
       return response.data.data;
     } catch (error) {

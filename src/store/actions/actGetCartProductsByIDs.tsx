@@ -4,7 +4,7 @@ import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { TProductsResponse } from "@/types";
 
-const API_PRODUCTS = import.meta.env.VITE_API_PRODUCTS_URL;
+const API_PRODUCTS = import.meta.env.VITE_ECOMMERCE_API;
 
 const actGetCartProductsByIDs = createAsyncThunk(
   "cart/actGetProductsByIDs",
@@ -19,7 +19,9 @@ const actGetCartProductsByIDs = createAsyncThunk(
     try {
       // Prepare our promises:
       const requests = itemsIDs.map((id) =>
-        axios.get<TProductsResponse>(`${API_PRODUCTS}/${id}`, { signal }),
+        axios.get<TProductsResponse>(`${API_PRODUCTS}/products/${id}`, {
+          signal,
+        }),
       );
       // Send requests parallel:
       const responses = await Promise.all(requests);
