@@ -1,14 +1,8 @@
+import type { TEmailAvailabilityStatus } from "@/types";
 import axios from "axios";
 import { useState } from "react";
 
-export type TEmailAvailabilityStatus =
-  | "idle"
-  | "checking"
-  | "available"
-  | "notAvailable"
-  | "failed";
-
-const USERS_API = import.meta.env.VITE_API_GET_ALL_USERS;
+const USERS_API = import.meta.env.VITE_ECOMMERCE_API;
 
 const useCheckEmailAvailability = () => {
   const [enteredEmail, setEnteredEmail] = useState<string | null>(null);
@@ -21,7 +15,7 @@ const useCheckEmailAvailability = () => {
       // Checking...
       setEmailAvailabilityStatus("checking");
       // Sadly, this is the only endpoint I can use to access users.
-      const response = await axios.get(USERS_API);
+      const response = await axios.get(`${USERS_API}/users`);
 
       // Check if the email input is already registered.
       const findEmail = await response.data.users.filter(

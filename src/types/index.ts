@@ -1,6 +1,7 @@
 import type { TLoading } from "./shared.types";
 import { type TCategory, type TCategoryResponse } from "./category.types";
 import { type TProducts, type TProductsResponse } from "./products.types";
+import { type TEmailAvailabilityStatus } from "./emailAvailability.types";
 import { isString } from "./guards";
 export {
   type TLoading,
@@ -8,5 +9,6 @@ export {
   type TCategoryResponse,
   type TProducts,
   type TProductsResponse,
+  type TEmailAvailabilityStatus,
   isString,
 };
