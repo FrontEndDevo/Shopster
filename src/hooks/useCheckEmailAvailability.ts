@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const USERS_API = import.meta.env.VITE_ECOMMERCE_API;
 
-const useCheckEmailAvailability = () => {
+function useCheckEmailAvailability() {
   const [enteredEmail, setEnteredEmail] = useState<string | null>(null);
   const [emailAvailabilityStatus, setEmailAvailabilityStatus] =
     useState<TEmailAvailabilityStatus>("idle");
@@ -43,6 +43,6 @@ const useCheckEmailAvailability = () => {
     handleCheckEmailAvailability,
     handleResetCheckEmailAvailability,
   };
-};
+}
 
 export default useCheckEmailAvailability;
