@@ -8,7 +8,7 @@ const Wishlist = lazy(() => import("@/pages/Wishlist"));
 const About = lazy(() => import("@/pages/About"));
 const Login = lazy(() => import("@/pages/Login"));
 const Register = lazy(() => import("@/pages/Register"));
-const NotFound = lazy(() => import("@/pages/NotFound"));
+import NotFound from "@/pages/NotFound";
 const AppRouter = () => {
   return (
     <Routes>
@@ -76,14 +76,7 @@ const AppRouter = () => {
           </Suspense>
         }
       />
-      <Route
-        path="*"
-        element={
-          <Suspense fallback="Loading... please wait.">
-            <NotFound />
-          </Suspense>
-        }
-      />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
