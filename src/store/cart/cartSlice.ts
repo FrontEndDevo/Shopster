@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { isString, type TLoading, type TProducts } from "@/types";
+import { isString, type TError, type TLoading, type TProducts } from "@/types";
 import { getTotalCartQuantitySelector } from "../selectors";
 import actGetCartProductsByIDs from "../actions/actGetCartProductsByIDs";
 
@@ -7,7 +7,7 @@ interface ICartState {
   items: { [key: string]: number };
   productsWithFullInfo: TProducts[];
   loading: TLoading;
-  error: string | null;
+  error: TError;
 }
 
 const initialState: ICartState = {

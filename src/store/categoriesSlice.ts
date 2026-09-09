@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import actGetCategories from "./actions/actGetCategories";
-import { isString, type TCategory, type TLoading } from "@/types/";
+import { isString, type TCategory, type TError, type TLoading } from "@/types/";
 type categoriesState = {
   records: TCategory[];
   loading: TLoading;
-  error: string | null;
+  error: TError;
 };
 
 const initialState: categoriesState = {

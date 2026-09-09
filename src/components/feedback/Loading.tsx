@@ -1,8 +1,8 @@
-import type { TLoading } from "@/types";
+import type { TError, TLoading } from "@/types";
 
 type LoadingProps = {
   status: TLoading;
-  error: string | null;
+  error: TError;
   children: React.ReactNode;
 };
 

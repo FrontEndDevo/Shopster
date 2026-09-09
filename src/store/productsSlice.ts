@@ -1,10 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import actGetProducts from "./actions/actGetProducts";
-import { isString, type TLoading, type TProducts } from "../types/index";
+import {
+  isString,
+  type TError,
+  type TLoading,
+  type TProducts,
+} from "../types/index";
 type productsState = {
   records: TProducts[];
   loading: TLoading;
-  error: string | null;
+  error: TError;
 };
 
 const initialState: productsState = {
