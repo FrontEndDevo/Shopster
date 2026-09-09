@@ -1,4 +1,4 @@
-import type { TEmailAvailabilityStatus } from "@/hooks/useCheckEmailAvailability";
+import type { TEmailAvailabilityStatus } from "@/types";
 import type { FieldValues, Path, UseFormRegister } from "react-hook-form";
 
 type TInputProps<TFieldValue extends FieldValues> = {
@@ -36,7 +36,7 @@ const Input = <TFieldValue extends FieldValues>({
   const labelClasses =
     "text-start block mb-1 text-sm font-semibold text-heading";
 
-  const errorClasses = "text-base text-red-600 my-2";
+  const errorClasses = "text-sm text-red-600 mt-2 text-start";
 
   const emailAvailabilityClasses =
     emailStatus === "available"
