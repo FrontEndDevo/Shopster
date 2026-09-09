@@ -12,8 +12,6 @@ const FavoriteButton = ({ id, favorite }: TFavoriteButtonProps) => {
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log(isLoading);
-
   const handleFavoriteProduct = () => {
     setIsLoading(true);
     dispatch(actWishlistToggle({ id, type: favorite ? "remove" : "add" }))

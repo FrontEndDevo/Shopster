@@ -8,7 +8,6 @@ const CartTotalPrice = ({ products }: TCartItemListProps) => {
   const handleCartPurchase = () => {
     // Do something here:
     setIsPurchase(true);
-    console.log(`Purchase`);
   };
 
   // I used useMemo to prevent calling this heavy function again in vain.
