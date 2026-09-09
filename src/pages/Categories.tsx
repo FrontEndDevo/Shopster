@@ -10,7 +10,7 @@ const Categories = () => {
   return (
     <>
       <Heading title="Categories" />
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 xl:grid-cols-4 gap-8 my-6">
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 max-sm:grid-cols-1 grid-cols-2 justify-items-center xl:grid-cols-6 gap-8 my-6">
         <Loading status={loading} error={error}>
           <RenderList
             records={records}
