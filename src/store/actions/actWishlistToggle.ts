@@ -1,8 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
-
-const USER_TOKEN = import.meta.env.VITE_DEFAULT_USER_TOKEN;
+import type { RootState } from "../redux";
 
 type TWishlistProps = {
   id: number;
@@ -12,7 +11,9 @@ type TWishlistProps = {
 const actWishlistToggle = createAsyncThunk(
   "wishlist/actWishlistToggle",
   async ({ id, type }: TWishlistProps, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
+    const { rejectWithValue, getState } = thunkAPI;
+    const { auth } = getState() as RootState;
+
     try {
       if (type === "add") {
         const response = await axios.post(
@@ -22,7 +23,7 @@ const actWishlistToggle = createAsyncThunk(
           },
           {
             headers: {
-              token: USER_TOKEN,
+              token: auth.token,
             },
           },
         );
@@ -33,7 +34,7 @@ const actWishlistToggle = createAsyncThunk(
           `https://ecommerce.routemisr.com/api/v1/wishlist/${id}`,
           {
             headers: {
-              token: USER_TOKEN,
+              token: auth.token,
             },
           },
         );
