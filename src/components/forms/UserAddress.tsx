@@ -5,7 +5,7 @@ type TUserAddressProps = {
   closeModal: () => void;
 };
 
-const UserAddressModal = ({ closeModal }: TUserAddressProps) => {
+const UserAddress = ({ closeModal }: TUserAddressProps) => {
   const {
     loading,
     error,
@@ -65,4 +65,4 @@ const UserAddressModal = ({ closeModal }: TUserAddressProps) => {
   );
 };
 
-export default UserAddressModal;
+export default UserAddress;
