@@ -2,7 +2,7 @@ import { useState } from "react";
 import Favorite from "@/assets/favorite.svg?react";
 import { useAppDispatch } from "@/store/hooks";
 import { actWishlistToggle } from "@/store/wishlist/wishlistSlice";
-import PopupModal from "./PopupModal";
+import PopupModal from "./modals/PopupModal";
 
 type TFavoriteButtonProps = {
   id: number;

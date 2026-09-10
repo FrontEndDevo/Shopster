@@ -5,8 +5,9 @@ import CalcCartTotalPrice from "@/utils/CalcCartTotalPrice";
 const CartTotalPrice = ({ products }: TCartItemListProps) => {
   const [isPurchase, setIsPurchase] = useState(false);
 
-  const handleCartPurchase = () => {
+  const handlePlaceOrder = () => {
     // Do something here:
+    
     setIsPurchase(true);
   };
 
@@ -40,8 +41,8 @@ const CartTotalPrice = ({ products }: TCartItemListProps) => {
 
       <button
         disabled={isPurchase}
-        className="font-semibold text-lg bg-red-500 py-1 px-3 mx-auto rounded text-white transition duration-100 hover:bg-red-600 cursor-pointer disabled:bg-red-300 disabled:cursor-default"
-        onClick={handleCartPurchase}
+        className="font-semibold text-lg bg-blue-500 py-1 px-3 mx-auto rounded text-white transition duration-100 hover:bg-blue-600 cursor-pointer disabled:bg-blue-300 disabled:cursor-default"
+        onClick={handlePlaceOrder}
       >
         Procced to checkout
       </button>
