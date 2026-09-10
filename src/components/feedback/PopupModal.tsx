@@ -1,13 +1,13 @@
 import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 
-const PopupModel = ({ closeModel }: { closeModel: () => void }) => {
+const PopupModal = ({ closeModal }: { closeModal: () => void }) => {
   const navigate = useNavigate();
   return createPortal(
     <div className="fixed top-1/12 right-2/12 md:right-1/4 lg:right-1/3 xl:right-2/5 h-fit w-fit py-6 px-20 z-50 rounded-lg bg-neutral-600 text-white">
       <div className="relative">
         <button
-          onClick={() => closeModel()}
+          onClick={() => closeModal()}
           className="absolute -top-4 -right-16 text-2xl hover:text-red-600 transition duration-150 cursor-pointer p-1"
         >
           x
@@ -22,7 +22,7 @@ const PopupModel = ({ closeModel }: { closeModel: () => void }) => {
         </div>
         <div className="flex justify-center items-center gap-4">
           <button
-            onClick={() => closeModel()}
+            onClick={() => closeModal()}
             className="rounded-sm bg-red-600 hover:shadow-red-400 hover:shadow-lg transition duration-150 py-2 px-6 font-semibold italic text-lg cursor-pointer"
           >
             Close
@@ -40,4 +40,4 @@ const PopupModel = ({ closeModel }: { closeModel: () => void }) => {
   );
 };
 
-export default PopupModel;
+export default PopupModal;
