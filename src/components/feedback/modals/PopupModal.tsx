@@ -12,7 +12,7 @@ const PopupModal = ({ closeModal }: { closeModal: () => void }) => {
         >
           x
         </button>
-        <div className="text-center lg:py-4 lg:px-12 ">
+        <div className="text-center lg:py-4 lg:px-12">
           <div>
             <p className="text-lg lg:text-2xl font-semibold">Login Required!</p>
             <p className="my-4 text-sm lg:text-base">
@@ -29,7 +29,7 @@ const PopupModal = ({ closeModal }: { closeModal: () => void }) => {
           </button>
           <button
             onClick={() => navigate("/login")}
-            className="rounded-sm bg-green-600 hover:shadow-green-400 hover:shadow-lg transition duration-150 py-2 px-6 font-semibold italic text-lg cursor-pointer"
+            className="rounded-sm bg-blue-600 hover:shadow-blue-400 hover:shadow-lg transition duration-150 py-2 px-6 font-semibold italic text-lg cursor-pointer"
           >
             Login
           </button>
