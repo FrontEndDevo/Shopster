@@ -4,6 +4,7 @@ import products from "./productsSlice";
 import cart from "./cart/cartSlice";
 import wishlist from "./wishlist/wishlistSlice";
 import auth from "./auth/authSlice";
+import address from "./auth/addressSlice";
 import {
   persistReducer,
   FLUSH,
@@ -43,6 +44,7 @@ const rootReducer = combineReducers({
   cart,
   wishlist,
   auth,
+  address,
 });
 
 const persistedReducer = persistReducer(rootPersistConfig, rootReducer);
