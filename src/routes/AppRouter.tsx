@@ -9,6 +9,8 @@ const About = lazy(() => import("@/pages/About"));
 const Login = lazy(() => import("@/pages/Login"));
 const Register = lazy(() => import("@/pages/Register"));
 import NotFound from "@/pages/NotFound";
+import Profile from "@/pages/Profile";
+import ProtectedRoute from "./ProtectedRoute";
 const AppRouter = () => {
   return (
     <Routes>
@@ -23,17 +25,21 @@ const AppRouter = () => {
       <Route
         path="/cart"
         element={
-          <Suspense fallback="Loading... please wait.">
-            <Cart />
-          </Suspense>
+          <ProtectedRoute>
+            <Suspense fallback="Loading... please wait.">
+              <Cart />
+            </Suspense>
+          </ProtectedRoute>
         }
       />
       <Route
         path="/wishlist"
         element={
-          <Suspense fallback="Loading... please wait.">
-            <Wishlist />
-          </Suspense>
+          <ProtectedRoute>
+            <Suspense fallback="Loading... please wait.">
+              <Wishlist />
+            </Suspense>
+          </ProtectedRoute>
         }
       />
       <Route
@@ -74,6 +80,16 @@ const AppRouter = () => {
           <Suspense fallback="Loading... please wait.">
             <Register />
           </Suspense>
+        }
+      />
+      <Route
+        path="profile"
+        element={
+          <ProtectedRoute>
+            <Suspense fallback="Loading... please wait.">
+              <Profile />
+            </Suspense>
+          </ProtectedRoute>
         }
       />
       <Route path="*" element={<NotFound />} />
