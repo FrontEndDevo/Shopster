@@ -27,3 +27,10 @@ export type TUserResponse = {
   token: TUserToken;
   user: TUser;
 };
+
+// User Address
+export type TUserAddress = {
+  details?: string;
+  phone?: string;
+  city?: string;
+};
