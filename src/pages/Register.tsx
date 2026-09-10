@@ -1,52 +1,18 @@
-import { useForm, type SubmitHandler } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  signUpSchema,
-  type TRegistrationInputs,
-} from "@/validation/SignUpSchema";
 import Input from "@/components/forms/Input";
 import Heading from "@/components/common/Heading";
-import useCheckEmailAvailability from "@/hooks/useCheckEmailAvailability";
+import { useRegister } from "@/hooks";
 
 const Register = () => {
   const {
+    loading,
+    error,
+    emailAvailabilityStatus,
+    formErrors,
     register,
     handleSubmit,
-    getFieldState,
-    trigger,
-    formState: { errors },
-  } = useForm<TRegistrationInputs>({
-    mode: "onBlur",
-    resolver: zodResolver(signUpSchema),
-  });
-
-  const {
-    enteredEmail,
-    emailAvailabilityStatus,
-    handleCheckEmailAvailability,
-    handleResetCheckEmailAvailability,
-  } = useCheckEmailAvailability();
-
-  const handleSubmitForm: SubmitHandler<TRegistrationInputs> = (data) => {
-    console.log(data);
-  };
-
-  const handleEmailOnBlur = async (e: React.FocusEvent<HTMLInputElement>) => {
-    // To trigger inpurt validation manually without submitting.
-    await trigger("email");
-
-    const value = e.target.value;
-    // isDirty gives true if the input not empty, invalid gives true is the input is not valid.
-    const { isDirty, invalid } = getFieldState("email");
-
-    // Check if the user exist the email input and return again, in this case We must clear the valuse
-    if (enteredEmail && isDirty && invalid) {
-      handleResetCheckEmailAvailability();
-    }
-
-    // Check if the email is not empty & valid & not equal to the previous written email.
-    if (isDirty && !invalid) handleCheckEmailAvailability(value);
-  };
+    handleSubmitForm,
+    handleEmailOnBlur,
+  } = useRegister();
 
   return (
     <>
@@ -59,7 +25,7 @@ const Register = () => {
           label="First Name"
           name="firstName"
           type="text"
-          error={errors.firstName?.message as string}
+          error={formErrors.firstName?.message as string}
           register={register}
         />
 
@@ -67,7 +33,7 @@ const Register = () => {
           label="Last Name"
           name="lastName"
           type="text"
-          error={errors.lastName?.message as string}
+          error={formErrors.lastName?.message as string}
           register={register}
         />
 
@@ -75,7 +41,7 @@ const Register = () => {
           label="Your email"
           name="email"
           type="email"
-          error={errors.email?.message as string}
+          error={formErrors.email?.message as string}
           register={register}
           onBlur={handleEmailOnBlur}
           emailStatus={emailAvailabilityStatus}
@@ -85,7 +51,7 @@ const Register = () => {
           label="Password"
           name="password"
           type="password"
-          error={errors.password?.message as string}
+          error={formErrors.password?.message as string}
           register={register}
         />
 
@@ -93,21 +59,33 @@ const Register = () => {
           label="Confirm Password"
           name="confirmPasaword"
           type="password"
-          error={errors.confirmPasaword?.message as string}
+          error={formErrors.confirmPasaword?.message as string}
           register={register}
         />
 
-        <button
-          className="font-semibold text-white py-2 px-6 my-2 cursor-pointer bg-blue-600 rounded transition duration-200 hover:bg-blue-800 disabled:bg-gray-400 disabled:cursor-default"
-          type="submit"
-          disabled={
-            emailAvailabilityStatus === "checking" ||
-            emailAvailabilityStatus === "notAvailable" ||
-            emailAvailabilityStatus === "failed"
-          }
-        >
-          Sign Up
-        </button>
+        <div className="flex items-center justify-between">
+          <button
+            className="font-semibold text-white py-2 px-6 my-2 cursor-pointer bg-blue-600 rounded transition duration-200 hover:bg-blue-800 disabled:bg-gray-400 disabled:cursor-default"
+            type="submit"
+            disabled={
+              emailAvailabilityStatus === "checking" ||
+              emailAvailabilityStatus === "notAvailable" ||
+              emailAvailabilityStatus === "failed" ||
+              loading === "pending" ||
+              loading === "succeeded"
+            }
+          >
+            {loading === "pending" ? "Creating account..." : "Sign Up"}
+          </button>
+          {error && loading === "failed" && (
+            <p className="text-sm font-semibold text-red-600 my-2">{error}</p>
+          )}
+        </div>
+        {loading === "succeeded" && (
+          <p className="text-sm font-semibold text-green-600 my-2">
+            Your account was successfully created, please login now
+          </p>
+        )}
       </form>
     </>
   );
