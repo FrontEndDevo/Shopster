@@ -13,6 +13,7 @@ const Product = memo(
     priceAfterDiscount,
     quantity,
     isFavorite,
+    isAuthenticated,
   }: TProducts) => {
     const dispatch = useAppDispatch();
     const handleAddToCart = () => {
@@ -56,7 +57,11 @@ const Product = memo(
         <span className="absolute text-lg lg:text-sm top-3 left-3 bg-blue-500 text-white rounded-full p-1">
           {quantity}
         </span>
-        <FavoriteButton id={id} favorite={isFavorite} />
+        <FavoriteButton
+          id={id}
+          favorite={isFavorite}
+          isAuthenticated={isAuthenticated}
+        />
       </div>
     );
   },

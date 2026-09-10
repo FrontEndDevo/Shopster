@@ -9,6 +9,7 @@ export type TProducts = {
   quantity?: number;
   amount?: number;
   isFavorite?: boolean;
+  isAuthenticated?: boolean;
 };
 
 export type TProductsResponse = {

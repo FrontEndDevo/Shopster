@@ -6,7 +6,7 @@ function useProducts() {
   const dispatch = useAppDispatch();
   const { records, loading, error } = useAppSelector((state) => state.products);
   const { productsIds } = useAppSelector((state) => state.wishlist);
-
+  const { token } = useAppSelector((state) => state.auth);
   useEffect(() => {
     const promise = dispatch(actGetProducts());
 
@@ -20,6 +20,7 @@ function useProducts() {
   const wishlistProducts = records.map((el) => ({
     ...el,
     isFavorite: productsIds.includes(el.id),
+    isAuthenticated: token ? true : false,
   }));
   return { wishlistProducts, records, loading, error };
 }
