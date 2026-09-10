@@ -1,48 +1,47 @@
-import Heading from "@/components/common/Heading";
 import Input from "@/components/forms/Input";
-import { LoginSchema, type TLoginInputs } from "@/validation/LoginSchema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, type SubmitHandler } from "react-hook-form";
+import Heading from "@/components/common/Heading";
+import { useLogin } from "@/hooks";
 
 const Login = () => {
   const {
+    loading,
+    error,
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<TLoginInputs>({
-    mode: "onBlur",
-    resolver: zodResolver(LoginSchema),
-  });
-
-  const handleLoginForm: SubmitHandler<TLoginInputs> = (data) => {
-    console.log(data);
-  };
+    formErrors,
+    handleLoginForm,
+  } = useLogin();
 
   return (
     <>
-      <Heading title="Log in"/>
+      <Heading title="Log in" />
       <form onSubmit={handleSubmit(handleLoginForm)}>
         <Input
           label="Email"
           type="email"
           name="email"
           register={register}
-          error={errors.email?.message as string}
+          error={formErrors.email?.message as string}
         />
         <Input
           label="Password"
           type="password"
           name="password"
           register={register}
-          error={errors.password?.message as string}
+          error={formErrors.password?.message as string}
         />
 
         <button
-          className="font-semibold text-white py-2 px-6 my-2 cursor-pointer bg-blue-600 rounded transition duration-200 hover:bg-blue-800"
+          className="font-semibold text-white py-2 px-6 my-2 cursor-pointer bg-blue-600 rounded transition duration-200 hover:bg-blue-800 disabled:bg-gray-400 disabled:cursor-default"
           type="submit"
+          disabled={loading === "pending" || loading === "succeeded"}
         >
-          Login
+          {loading === "pending" ? "Logining..." : "Login"}
         </button>
+
+        {error && loading === "failed" && (
+          <p className="text-sm font-semibold text-red-600 my-2">{error}</p>
+        )}
       </form>
     </>
   );
