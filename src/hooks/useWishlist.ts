@@ -9,7 +9,7 @@ function useWishlist() {
   const { items } = useAppSelector((state) => state.cart);
 
   useEffect(() => {
-    const promise = dispatch(actGetWishlist());
+    const promise = dispatch(actGetWishlist("productsWithFullInfo"));
 
     return () => {
       promise.abort();
@@ -21,6 +21,7 @@ function useWishlist() {
     ...el,
     amount: items[el.id],
     isFavorite: true,
+    isAuthenticated: true,
   }));
 
   return { wishlistProducts, loading, error };
