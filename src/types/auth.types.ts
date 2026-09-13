@@ -13,9 +13,11 @@ export type TAuthSignUp = {
 
 // User
 export type TUser = {
+  id?: string;
   name: string;
   email: string;
   role: "user" | "admin";
+  phone?: string;
 };
 
 // Token
