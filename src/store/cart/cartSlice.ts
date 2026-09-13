@@ -1,18 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { isString, type TError, type TLoading, type TProducts } from "@/types";
+import { isString, type TError, type TLoading, type TCartItem } from "@/types";
 import { getTotalCartQuantitySelector } from "../selectors";
-import actGetCartProductsByIDs from "../actions/actGetCartProductsByIDs";
+import actAddProductToCart from "./actions/actAddProductToCart";
+import actGetLoggedUserCart from "./actions/actGetLoggedUserCart";
+import actClearUserCart from "./actions/actClearUserCart";
+import actRemoveProductFromCart from "./actions/actRemoveProductFromCart";
+import actUpdateCartProductQuantity from "./actions/actUpdateCartProductQuantity";
 
 interface ICartState {
   items: { [key: string]: number };
-  productsWithFullInfo: TProducts[];
+  productsWithFullInfo: TCartItem;
   loading: TLoading;
   error: TError;
 }
 
 const initialState: ICartState = {
   items: {},
-  productsWithFullInfo: [],
+  productsWithFullInfo: {
+    totalCartPrice: 0,
+    products: [],
+  },
   loading: "idle",
   error: null,
 };
@@ -20,94 +27,102 @@ const initialState: ICartState = {
 const cartSlice = createSlice({
   name: "cart",
   initialState,
-  reducers: {
-    addToCart: (state, action) => {
-      const itemId = action.payload;
-      if (state.items[itemId]) {
-        state.items[itemId]++;
-      } else {
-        state.items[itemId] = 1;
-      }
-    },
-    removeFromCart: (state, action) => {
-      delete state.items[action.payload];
-      state.productsWithFullInfo = state.productsWithFullInfo.filter(
-        (el) => el.id !== action.payload,
-      );
-    },
-    clearCart: (state) => {
-      state.productsWithFullInfo = [];
-    },
-
-    incrementQuantity: (state, action) => {
-      const id = String(action.payload);
-
-      // Update the product amount in the items first.
-      if (state.items[id] !== undefined) {
-        state.items[id] += 1;
-      } else {
-        state.items[id] = 1;
-      }
-
-      // Update the product amount in the productsWithFullInfo.
-      const item = state.productsWithFullInfo.find(
-        (el) => String(el.id) === id,
-      );
-      if (item) {
-        item.amount = (item.amount ?? 0) + 1;
-      }
-    },
-    decrementQuantity: (state, action) => {
-      const id = String(action.payload);
-      const item = state.productsWithFullInfo.find(
-        (el) => String(el.id) === id,
-      );
-
-      if (item) {
-        const currentAmount = item.amount ?? 1;
-
-        if (currentAmount > 1) {
-          // Decrement 1 from items & productsWithFullInfo:
-          item.amount = currentAmount - 1;
-          if (state.items[id]) {
-            state.items[id] -= 1;
-          }
-        } else {
-          // Delete the product from items & productsWithFullInfo:
-          delete state.items[id];
-          state.productsWithFullInfo = state.productsWithFullInfo.filter(
-            (el) => String(el.id) !== id,
-          );
-        }
-      }
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(actGetCartProductsByIDs.pending, (state) => {
+    // Add product to cart:
+    builder.addCase(actAddProductToCart.pending, (state) => {
       state.loading = "pending";
       state.error = null;
     });
 
-    builder.addCase(actGetCartProductsByIDs.fulfilled, (state, action) => {
+    builder.addCase(actAddProductToCart.fulfilled, (state, action) => {
       state.loading = "succeeded";
-      state.productsWithFullInfo = action.payload;
+      state.productsWithFullInfo.totalCartPrice = action.payload.totalCartPrice;
+      state.productsWithFullInfo.products = action.payload.products;
     });
 
-    builder.addCase(actGetCartProductsByIDs.rejected, (state, action) => {
+    builder.addCase(actAddProductToCart.rejected, (state, action) => {
+      state.loading = "failed";
+      if (isString(action.payload)) state.error = action.payload;
+    });
+
+    // Remove product from cart:
+    builder.addCase(actRemoveProductFromCart.pending, (state) => {
+      state.loading = "pending";
+      state.error = null;
+    });
+
+    builder.addCase(actRemoveProductFromCart.fulfilled, (state, action) => {
+      state.loading = "succeeded";
+      state.productsWithFullInfo.totalCartPrice = action.payload.totalCartPrice;
+      state.productsWithFullInfo.products = action.payload.products;
+    });
+
+    builder.addCase(actRemoveProductFromCart.rejected, (state, action) => {
+      state.loading = "failed";
+      if (isString(action.payload)) state.error = action.payload;
+    });
+
+    // Get logged user products in the cart:
+    builder.addCase(actGetLoggedUserCart.pending, (state) => {
+      state.loading = "pending";
+      state.error = null;
+    });
+
+    builder.addCase(actGetLoggedUserCart.fulfilled, (state, action) => {
+      state.loading = "succeeded";
+      state.productsWithFullInfo.totalCartPrice = action.payload.totalCartPrice;
+      state.productsWithFullInfo.products = action.payload.products;
+    });
+
+    builder.addCase(actGetLoggedUserCart.rejected, (state, action) => {
+      state.loading = "failed";
+      if (isString(action.payload)) state.error = action.payload;
+    });
+
+    // Update Cart Product Quantity:
+    builder.addCase(actUpdateCartProductQuantity.pending, (state) => {
+      state.loading = "pending";
+      state.error = null;
+    });
+
+    builder.addCase(actUpdateCartProductQuantity.fulfilled, (state, action) => {
+      state.loading = "succeeded";
+      state.productsWithFullInfo.totalCartPrice = action.payload.totalCartPrice;
+      state.productsWithFullInfo.products = action.payload.products;
+    });
+
+    builder.addCase(actUpdateCartProductQuantity.rejected, (state, action) => {
+      state.loading = "failed";
+      if (isString(action.payload)) state.error = action.payload;
+    });
+
+    // Clear user cart:
+    builder.addCase(actClearUserCart.pending, (state) => {
+      state.loading = "pending";
+      state.error = null;
+    });
+
+    builder.addCase(actClearUserCart.fulfilled, (state, action) => {
+      state.loading = "succeeded";
+      state.productsWithFullInfo.totalCartPrice = action.payload.totalCartPrice;
+      state.productsWithFullInfo.products = action.payload.products;
+    });
+
+    builder.addCase(actClearUserCart.rejected, (state, action) => {
       state.loading = "failed";
       if (isString(action.payload)) state.error = action.payload;
     });
   },
 });
 
-export { getTotalCartQuantitySelector, actGetCartProductsByIDs };
-
-export const {
-  addToCart,
-  removeFromCart,
-  clearCart,
-  incrementQuantity,
-  decrementQuantity,
-} = cartSlice.actions;
+export {
+  getTotalCartQuantitySelector,
+  actAddProductToCart,
+  actRemoveProductFromCart,
+  actUpdateCartProductQuantity,
+  actGetLoggedUserCart,
+  actClearUserCart,
+};
 
 export default cartSlice.reducer;
