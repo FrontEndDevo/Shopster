@@ -8,7 +8,6 @@ type TWishlistSlice = {
   productsIds: number[];
   productsWithFullInfo: TProducts[];
   loading: TLoading;
-
   error: null | string;
 };
 
