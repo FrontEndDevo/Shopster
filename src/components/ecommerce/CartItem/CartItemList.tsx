@@ -1,7 +1,7 @@
-import type { TProducts } from "@/types";
+import type { TCartProduct } from "@/types";
 import CartItem from "./CartItem";
 
-export type TCartItemListProps = { products: TProducts[] };
+type TCartItemListProps = { products: TCartProduct[] };
 
 const CartItemList = ({ products }: TCartItemListProps) => {
   return (
@@ -12,7 +12,12 @@ const CartItemList = ({ products }: TCartItemListProps) => {
         <p className="col-span-1 md:block hidden">Subtotal</p>
       </div>
       {products.map((el) => (
-        <CartItem key={el.id} {...el} />
+        <CartItem
+          key={el.product.id}
+          count={el.count}
+          price={el.price}
+          product={el.product}
+        />
       ))}
     </div>
   );
