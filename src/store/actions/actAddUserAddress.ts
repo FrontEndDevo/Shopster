@@ -18,7 +18,6 @@ const actAddUserAddress = createAsyncThunk(
           token: auth.token,
         },
       });
-      console.log(response.data.data);
 
       return response.data.data;
     } catch (error) {
