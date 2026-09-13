@@ -4,13 +4,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import actAddUserAddress from "../actions/actAddUserAddress";
 
 type TAddressState = {
-  shippingAddresses: TUserAddress[] | null;
+  shippingAddresses: TUserAddress[];
   loading: TLoading;
   error: TError;
 };
 
 const initialState: TAddressState = {
-  shippingAddresses: null,
+  shippingAddresses: [],
   loading: "idle",
   error: null,
 };
