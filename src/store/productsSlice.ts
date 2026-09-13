@@ -1,11 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { isString, type TError, type TLoading, type TProducts } from "../types";
 import actGetProducts from "./actions/actGetProducts";
-import {
-  isString,
-  type TError,
-  type TLoading,
-  type TProducts,
-} from "../types/index";
+
 type productsState = {
   records: TProducts[];
   loading: TLoading;
@@ -28,10 +24,12 @@ const productsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(actGetProducts.pending, (state) => {
-      ((state.loading = "pending"), (state.error = null));
+      state.loading = "pending";
+      state.error = null;
     });
     builder.addCase(actGetProducts.fulfilled, (state, action) => {
-      ((state.loading = "succeeded"), (state.records = action.payload));
+      state.loading = "succeeded";
+      state.records = action.payload;
     });
     builder.addCase(actGetProducts.rejected, (state, action) => {
       state.loading = "failed";
