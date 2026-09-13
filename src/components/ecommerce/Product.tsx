@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { useAppDispatch } from "@/store/hooks";
-import { addToCart } from "@/store/cart/cartSlice";
+import { actAddProductToCart } from "@/store/cart/cartSlice";
 import type { TProducts } from "@/types";
 import CalcProductPriceAfterDiscount from "@/utils/CalcProductPriceAfterDiscount";
 import FavoriteButton from "../feedback/FavoriteButton";
@@ -12,12 +12,13 @@ const Product = memo(
     price,
     priceAfterDiscount,
     quantity,
+    description,
     isFavorite,
     isAuthenticated,
   }: TProducts) => {
     const dispatch = useAppDispatch();
     const handleAddToCart = () => {
-      dispatch(addToCart(id));
+      dispatch(actAddProductToCart(String(id)));
     };
 
     const { finalPrice, finalDiscount } = CalcProductPriceAfterDiscount({
@@ -40,6 +41,9 @@ const Product = memo(
             >
               {title}
             </h2>
+            <div className="mx-auto my-2">
+              <p className="text-gray-600 text-sm">{description}</p>
+            </div>
             <div className="flex justify-center items-center gap-2">
               <p className="text-lg font-bold text-green-700">${finalPrice}</p>
               <span className="text-sm line-through text-gray-400">
