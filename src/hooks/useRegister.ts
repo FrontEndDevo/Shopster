@@ -9,6 +9,7 @@ import {
   signUpSchema,
   type TRegistrationInputs,
 } from "@/validation/SignUpSchema";
+import toast from "react-hot-toast";
 
 const useRegister = () => {
   const dispatch = useAppDispatch();
@@ -51,9 +52,21 @@ const useRegister = () => {
     const rePassword = data.confirmPasaword;
 
     const { email, password } = data;
-    dispatch(actAuthRegister({ name, email, password, rePassword }))
-      .unwrap()
-      .then(() => navigate("/"));
+
+    toast
+      .promise(
+        dispatch(
+          actAuthRegister({ name, email, password, rePassword }),
+        ).unwrap(),
+        {
+          loading: "signing up...",
+          success: "Sign up successfully.",
+          error: "Missing something, Try Again.",
+        },
+      )
+      .then(() => {
+        navigate("/");
+      });
   };
 
   const handleEmailOnBlur = async (e: React.FocusEvent<HTMLInputElement>) => {
