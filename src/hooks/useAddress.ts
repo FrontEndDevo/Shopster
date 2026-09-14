@@ -6,6 +6,7 @@ import {
 } from "@/validation/UserAddressSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type SubmitHandler } from "react-hook-form";
+import toast from "react-hot-toast";
 
 type TUserAddressHookProps = {
   closeModal: () => void;
@@ -25,8 +26,12 @@ const useAddress = ({ closeModal }: TUserAddressHookProps) => {
   });
 
   const handleLoginForm: SubmitHandler<TUserAddressInputs> = (data) => {
-    dispatch(actAddUserAddress(data))
-      .unwrap()
+    toast
+      .promise(dispatch(actAddUserAddress(data)).unwrap(), {
+        loading: "Adding new address.",
+        success: "Address added successfully.",
+        error: "Failed to add address.",
+      })
       .then(() => closeModal())
       .catch(() => closeModal());
   };
