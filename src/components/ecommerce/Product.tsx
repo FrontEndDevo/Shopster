@@ -1,9 +1,10 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import { useAppDispatch } from "@/store/hooks";
 import { actAddProductToCart } from "@/store/cart/cartSlice";
 import type { TProducts } from "@/types";
 import CalcProductPriceAfterDiscount from "@/utils/CalcProductPriceAfterDiscount";
 import FavoriteButton from "../feedback/FavoriteButton";
+import toast from "react-hot-toast";
 const Product = memo(
   ({
     id,
@@ -17,8 +18,17 @@ const Product = memo(
     isAuthenticated,
   }: TProducts) => {
     const dispatch = useAppDispatch();
+    const [isLoading, setIsLoading] = useState(false);
+
     const handleAddToCart = () => {
-      dispatch(actAddProductToCart(String(id)));
+      setIsLoading(true);
+      toast
+        .promise(dispatch(actAddProductToCart(String(id))).unwrap(), {
+          loading: "Adding item to cart...",
+          success: "Item added to cart successfully 🛒",
+          error: "Failed to add item to cart.",
+        })
+        .finally(() => setIsLoading(false));
     };
 
     const { finalPrice, finalDiscount } = CalcProductPriceAfterDiscount({
@@ -54,8 +64,9 @@ const Product = memo(
           <button
             className="border-2 border-neutral-700 py-1 px-4 rounded-lg hover:cursor-pointer transition duration-200 text-black font-semibold hover:text-white hover:bg-neutral-800 my-4"
             onClick={handleAddToCart}
+            disabled={isLoading}
           >
-            Add to cart
+            {isLoading ? "Adding..." : "Add to cart"}
           </button>
         </div>
         <span className="absolute text-lg lg:text-sm top-3 left-3 bg-blue-500 text-white rounded-full p-1">
