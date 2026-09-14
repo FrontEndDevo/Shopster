@@ -5,6 +5,7 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginSchema, type TLoginInputs } from "@/validation/LoginSchema";
 import { actAuthLogin, clearAuth } from "@/store/auth/authSlice";
+import toast from "react-hot-toast";
 
 const useLogin = () => {
   const dispatch = useAppDispatch();
@@ -31,9 +32,15 @@ const useLogin = () => {
   }, [dispatch, navigate, token]);
 
   const handleLoginForm: SubmitHandler<TLoginInputs> = (data) => {
-    dispatch(actAuthLogin(data))
-      .unwrap()
-      .then(() => navigate("/"));
+    toast
+      .promise(dispatch(actAuthLogin(data)).unwrap(), {
+        loading: "Logging...",
+        success: "Login successfully.",
+        error: "Invalid email or password.",
+      })
+      .then(() => {
+        navigate("/");
+      });
   };
 
   return {
