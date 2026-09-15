@@ -7,32 +7,54 @@ import {
   actRemoveProductFromCart,
   actUpdateCartProductQuantity,
 } from "@/store/cart/cartSlice";
+import toast from "react-hot-toast";
 
 const CartItem = memo(({ count, price, product }: TCartProduct) => {
   const dispatch = useAppDispatch();
   // Remove item from the cart
   const handleRemoveItemFromCart = () => {
-    dispatch(actRemoveProductFromCart(product.id));
+    toast.promise(dispatch(actRemoveProductFromCart(product.id)).unwrap(), {
+      loading: "Removing item...",
+      success: "Item removed from cart.",
+      error: "Could not remove item from cart.",
+    });
+    // .finally(() => setIsLoading(false));
   };
 
   // Increment 1 to the amout of a product in the cart:
   const handleIncrementQuantity = () => {
-    dispatch(
-      actUpdateCartProductQuantity({
-        productId: product.id,
-        amount: count + 1,
-      }),
+    toast.promise(
+      dispatch(
+        actUpdateCartProductQuantity({
+          productId: product.id,
+          amount: count + 1,
+        }),
+      ).unwrap(),
+      {
+        loading: "Increment quantity (+)",
+        success: "Cart updated.",
+        error: "Failed to update quantity.",
+      },
     );
+    // .finally(() => setIsLoading(false));
   };
 
   // Decrement 1 from the amout of a product in the cart:
   const handleDecrementQuantity = () => {
-    dispatch(
-      actUpdateCartProductQuantity({
-        productId: product.id,
-        amount: count - 1,
-      }),
+    toast.promise(
+      dispatch(
+        actUpdateCartProductQuantity({
+          productId: product.id,
+          amount: count - 1,
+        }),
+      ).unwrap(),
+      {
+        loading: "Decrement quantity (-)",
+        success: "Cart updated.",
+        error: "Failed to update quantity.",
+      },
     );
+    // .finally(() => setIsLoading(false));
   };
 
   // const { finalPrice } = CalcProductPriceAfterDiscount({
