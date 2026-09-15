@@ -27,6 +27,7 @@ const actUpdateCartProductQuantity = createAsyncThunk(
       );
 
       return {
+        cartId: response.data.cartId,
         totalCartPrice: response.data.data.totalCartPrice,
         products: response.data.data.products,
       };

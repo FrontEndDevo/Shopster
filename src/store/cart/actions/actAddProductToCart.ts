@@ -23,6 +23,7 @@ const actAddProductToCart = createAsyncThunk(
       );
 
       return {
+        cartId: response.data.cartId,
         products: response.data.data.products,
         totalCartPrice: response.data.data.totalCartPrice,
       };
