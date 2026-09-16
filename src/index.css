@@ -3,9 +3,11 @@
 @source "../.flowbite-react/class-list.json";
 
 #root {
-  width: 1126px;
-  max-width: 100%;
+  /* width: 1126px; */
+  /* max-width: 100%; */
+  position: relative;
   margin: 0 auto;
+
   text-align: center;
   border-inline: 1px solid var(--border);
   min-height: 100svh;
