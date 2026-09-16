@@ -16,7 +16,7 @@ const HeaderBadgeItem = memo(
         className="relative flex items-center gap-2 flex-row-reverse cursor-pointer group"
         onClick={() => navigate(`/${label}`)}
       >
-        <Icon className="w-8 h-8 transition-transform duration-200 hover:scale-110" />
+        <Icon className="w-8 h-8 transition-transform duration-200 hover:scale-110 text-white" />
 
         {count !== 0 && (
           <p
@@ -26,7 +26,6 @@ const HeaderBadgeItem = memo(
             {count}
           </p>
         )}
-        <p className="text-base capitalize">{label}</p>
       </div>
     );
   },
