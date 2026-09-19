@@ -36,5 +36,6 @@ export type TCartItem = {
 };
 
 export type TCartItemResponse = {
+  cartId: string;
   data: TCartItem;
 };
