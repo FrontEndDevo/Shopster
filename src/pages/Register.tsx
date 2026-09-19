@@ -1,6 +1,7 @@
 import Input from "@/components/forms/Input";
-import Heading from "@/components/common/Heading";
 import { useRegister } from "@/hooks";
+import registerIcon from "../assets/images/register-img.jpg";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const {
@@ -15,9 +16,12 @@ const Register = () => {
   } = useRegister();
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="w-full max-w-md">
-        <Heading title="Register" />
+    <div className="bg-white relative h-screen w-full overflow-hidden flex flex-row-reverse items-center gap-10 justify-center lg:justify-start">
+      <div className="w-full max-w-md mt-12 md:mr-28 lg:mr-20 2xl:mr-60 border-2 border-blue-300 border-dashed py-10 shadow-2xl px-6 rounded-3xl">
+        <h2 className="text-neutral-800 font-bold text-4xl text-start">
+          Register
+        </h2>
+
         <form
           className="max-w-sm mx-auto"
           onSubmit={handleSubmit(handleSubmitForm)}
@@ -63,10 +67,21 @@ const Register = () => {
             error={formErrors.confirmPasaword?.message as string}
             register={register}
           />
+          <div className="flex gap-1">
+            <label className="text-sm font-light pt-2">
+              I accept the Terms and Conditions
+            </label>
+            <Input
+              name="terms"
+              type="checkbox"
+              error={formErrors.terms?.message as string}
+              register={register}
+            />
+          </div>
 
           <div className="flex items-center justify-between">
             <button
-              className="font-semibold text-white py-2 px-6 my-2 cursor-pointer bg-blue-600 rounded transition duration-200 hover:bg-blue-800 disabled:bg-gray-400 disabled:cursor-default"
+              className="w-full font-semibold text-white py-2 px-6 my-2 cursor-pointer bg-blue-500 rounded transition duration-200 hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-default"
               type="submit"
               disabled={
                 emailAvailabilityStatus === "checking" ||
@@ -88,7 +103,23 @@ const Register = () => {
             </p>
           )}
         </form>
+
+        <div className="flex gap-1 justify-center items-center mt-6 text-sm">
+          <p>Already have an account?</p>
+          <Link
+            className="text-blue-600 font-semibold hover:text-blue-700 transition duration-200"
+            to="/login"
+          >
+            Sign in
+          </Link>
+        </div>
       </div>
+
+      <img
+        src={registerIcon}
+        alt="register-page"
+        className="absolute inset-0 h-full hidden lg:block md:w-1/3 lg:w-1/2 object-cover object-[center_15%]"
+      />
     </div>
   );
 };
