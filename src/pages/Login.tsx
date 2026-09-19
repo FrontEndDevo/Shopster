@@ -37,7 +37,7 @@ const Login = () => {
           />
 
           <button
-            className="font-semibold text-white py-2 px-6 my-2 cursor-pointer bg-blue-600 rounded transition duration-200 hover:bg-blue-800 disabled:bg-gray-400 disabled:cursor-default"
+            className="font-semibold text-white py-2 px-6 my-2 cursor-pointer bg-blue-500 rounded transition duration-200 hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-default"
             type="submit"
             disabled={loading === "pending" || loading === "succeeded"}
           >
