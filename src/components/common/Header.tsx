@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/store/hooks";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Cart from "@/assets/cart.svg?react";
 import Wishlist from "@/assets/wishlist.svg?react";
 import Shopster from "@/assets/Shopster.svg?react";
@@ -11,11 +11,15 @@ import { Navbar } from "flowbite-react";
 
 const Header = () => {
   const navigate = useNavigate();
+
   const { token } = useAppSelector((state) => state.auth);
   const totalQuantity = useAppSelector(getTotalCartQuantitySelector);
   const totalProducts = useAppSelector(
     (state) => state.wishlist.productsIds.length,
   );
+
+  const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
+    isActive ? "text-amber-300 font-bold" : "text-white hover:text-amber-300";
 
   return (
     <header className="absolute top-0 left-0 z-50 w-full bg-transparent">
@@ -30,12 +34,20 @@ const Header = () => {
           </span>
         </div>
 
-        <div className="flex justify-between items-center text-white p-2">
-          <ul className="flex gap-2 py-2 rounded-sm">
-            <Link to="/">Home</Link>
-            <Link to="/categories">Categories</Link>
-            <Link to="/products">Products</Link>
-            <Link to="/about">About</Link>
+        <div className="flex justify-between items-center p-2">
+          <ul className="flex gap-4 py-2 rounded-sm">
+            <NavLink className={getNavLinkClass} to="/">
+              Home
+            </NavLink>
+            <NavLink className={getNavLinkClass} to="/categories">
+              Categories
+            </NavLink>
+            <NavLink className={getNavLinkClass} to="/products">
+              Products
+            </NavLink>
+            <NavLink className={getNavLinkClass} to="/about">
+              About
+            </NavLink>
           </ul>
         </div>
 
