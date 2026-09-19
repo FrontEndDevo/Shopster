@@ -9,6 +9,7 @@ export type TAuthSignUp = {
   email: string;
   password: string;
   rePassword: string;
+  terms?: boolean;
 };
 
 // User

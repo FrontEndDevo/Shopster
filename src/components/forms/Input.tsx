@@ -2,7 +2,7 @@ import type { TEmailAvailabilityStatus } from "@/types";
 import type { FieldValues, Path, UseFormRegister } from "react-hook-form";
 
 type TInputProps<TFieldValue extends FieldValues> = {
-  label: string;
+  label?: string;
   name: Path<TFieldValue>;
   type?: string;
   error: string;

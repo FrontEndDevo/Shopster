@@ -14,9 +14,12 @@ const signUpSchema = z
     confirmPasaword: z
       .string()
       .min(1, { message: "Confirm password is required." }),
+    terms: z.boolean().refine((val) => val === true, {
+      message: "You must accept the terms and conditions.",
+    }),
   })
   .refine((input) => input.password === input.confirmPasaword, {
-    message: "Password and confirm password does not match.",
+    message: "Passwords do not match.",
     path: ["confirmPasaword"],
   });
 
