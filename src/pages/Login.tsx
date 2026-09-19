@@ -58,12 +58,6 @@ const Login = () => {
           </Link>
         </div>
       </div>
-      {/* 
-      <img
-        src={loginIcon}
-        alt="login-page"
-        className="absolute inset-0 top-16 h-full hidden lg:block lg:w-1/3 xl:w-1/2 object-cover"
-      /> */}
 
       <img
         src={loginIcon}
