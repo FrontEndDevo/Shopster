@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/store/hooks";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Cart from "@/assets/cart.svg?react";
 import Wishlist from "@/assets/wishlist.svg?react";
 import Shopster from "@/assets/Shopster.svg?react";
