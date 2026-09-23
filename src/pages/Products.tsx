@@ -10,7 +10,7 @@ const Products = () => {
   return (
     <>
       <Heading title="Products" />
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 xl:grid-cols-4 gap-8 my-6">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 xl:grid-cols-4 mx-auto max-w-3/4 gap-8 my-12">
         <Loading status={loading} error={error}>
           <RenderList
             records={wishlistProducts}
