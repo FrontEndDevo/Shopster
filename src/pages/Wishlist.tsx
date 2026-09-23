@@ -8,9 +8,9 @@ const Wishlist = () => {
   const { wishlistProducts, loading, error } = useWishlist();
 
   return (
-    <>
+    <div className="my-20 mx-auto max-w-3/4">
       <Heading title="Your wishlist" />
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 xl:grid-cols-4 gap-8 my-6">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 xl:grid-cols-4 gap-8">
         <Loading status={loading} error={error}>
           <RenderList
             records={wishlistProducts}
@@ -26,7 +26,7 @@ const Wishlist = () => {
           )}
         </Loading>
       </div>
-    </>
+    </div>
   );
 };
 

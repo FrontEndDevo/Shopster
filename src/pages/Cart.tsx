@@ -20,12 +20,12 @@ const Cart = () => {
     // .finally(() => setIsLoading(false));
   };
   return (
-    <>
+    <div className="my-20 mx-auto max-w-3/4">
       <Heading title="Your cart" />
 
       <Loading status={loading} error={error}>
         {productsWithFullInfo.products.length > 0 ? (
-          <div className="my-10 mx-5 grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <div className="lg:col-span-2">
               <CartItemList products={productsWithFullInfo.products} />
             </div>
@@ -47,7 +47,7 @@ const Cart = () => {
           </div>
         )}
       </Loading>
-    </>
+    </div>
   );
 };
 
