@@ -1,68 +1,16 @@
 import { memo } from "react";
-import { useAppDispatch } from "@/store/hooks";
 // import CalcProductPriceAfterDiscount from "@/utils/CalcProductPriceAfterDiscount";
 import type { TCartProduct } from "@/types";
 import Remove from "@/assets/remove.svg?react";
-import {
-  actRemoveProductFromCart,
-  actUpdateCartProductQuantity,
-} from "@/store/cart/cartSlice";
-import toast from "react-hot-toast";
+import useCartItem from "@/hooks/useCartItem";
 
 const CartItem = memo(({ count, price, product }: TCartProduct) => {
-  const dispatch = useAppDispatch();
-  // Remove item from the cart
-  const handleRemoveItemFromCart = () => {
-    toast.promise(dispatch(actRemoveProductFromCart(product.id)).unwrap(), {
-      loading: "Removing item...",
-      success: "Item removed from cart.",
-      error: "Could not remove item from cart.",
-    });
-    // .finally(() => setIsLoading(false));
-  };
-
-  // Increment 1 to the amout of a product in the cart:
-  const handleIncrementQuantity = () => {
-    toast.promise(
-      dispatch(
-        actUpdateCartProductQuantity({
-          productId: product.id,
-          amount: count + 1,
-        }),
-      ).unwrap(),
-      {
-        loading: "Increment quantity (+)",
-        success: "Cart updated.",
-        error: "Failed to update quantity.",
-      },
-    );
-    // .finally(() => setIsLoading(false));
-  };
-
-  // Decrement 1 from the amout of a product in the cart:
-  const handleDecrementQuantity = () => {
-    toast.promise(
-      dispatch(
-        actUpdateCartProductQuantity({
-          productId: product.id,
-          amount: count - 1,
-        }),
-      ).unwrap(),
-      {
-        loading: "Decrement quantity (-)",
-        success: "Cart updated.",
-        error: "Failed to update quantity.",
-      },
-    );
-    // .finally(() => setIsLoading(false));
-  };
-
-  // const { finalPrice } = CalcProductPriceAfterDiscount({
-  //   price,
-  //   priceAfterDiscount,
-  // });
-
-  const subTotal = price * count;
+  const {
+    subTotal,
+    handleRemoveItemFromCart,
+    handleIncrementQuantity,
+    handleDecrementQuantity,
+  } = useCartItem({ count, price, product });
 
   return (
     <div className="grid grid-cols-12 items-center gap-4 border-b border-dashed border-gray-200 py-4 px-2">
