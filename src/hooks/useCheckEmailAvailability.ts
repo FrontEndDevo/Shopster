@@ -25,7 +25,7 @@ function useCheckEmailAvailability() {
       );
 
       // Check if the email input is already registered.
-      const findEmail = await response.data.users.filter(
+      const findEmail = response.data.users.filter(
         (user) => user.email === email,
       );
 
