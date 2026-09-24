@@ -9,6 +9,7 @@ import actUpdateCartProductQuantity from "./actions/actUpdateCartProductQuantity
 
 interface ICartState {
   items: { [key: string]: number };
+  cartId: string | null;
   productsWithFullInfo: TCartItem;
   loading: TLoading;
   error: TError;
@@ -16,6 +17,7 @@ interface ICartState {
 
 const initialState: ICartState = {
   items: {},
+  cartId: null,
   productsWithFullInfo: {
     totalCartPrice: 0,
     products: [],
@@ -37,6 +39,7 @@ const cartSlice = createSlice({
 
     builder.addCase(actAddProductToCart.fulfilled, (state, action) => {
       state.loading = "succeeded";
+      state.cartId = action.payload.cartId;
       state.productsWithFullInfo.totalCartPrice = action.payload.totalCartPrice;
       state.productsWithFullInfo.products = action.payload.products;
     });
@@ -54,6 +57,7 @@ const cartSlice = createSlice({
 
     builder.addCase(actRemoveProductFromCart.fulfilled, (state, action) => {
       state.loading = "succeeded";
+      state.cartId = action.payload.cartId;
       state.productsWithFullInfo.totalCartPrice = action.payload.totalCartPrice;
       state.productsWithFullInfo.products = action.payload.products;
     });
@@ -71,6 +75,7 @@ const cartSlice = createSlice({
 
     builder.addCase(actGetLoggedUserCart.fulfilled, (state, action) => {
       state.loading = "succeeded";
+      state.cartId = action.payload.cartId;
       state.productsWithFullInfo.totalCartPrice = action.payload.totalCartPrice;
       state.productsWithFullInfo.products = action.payload.products;
     });
@@ -88,6 +93,7 @@ const cartSlice = createSlice({
 
     builder.addCase(actUpdateCartProductQuantity.fulfilled, (state, action) => {
       state.loading = "succeeded";
+      state.cartId = action.payload.cartId;
       state.productsWithFullInfo.totalCartPrice = action.payload.totalCartPrice;
       state.productsWithFullInfo.products = action.payload.products;
     });
@@ -105,6 +111,7 @@ const cartSlice = createSlice({
 
     builder.addCase(actClearUserCart.fulfilled, (state, action) => {
       state.loading = "succeeded";
+      state.cartId = action.payload.cartId;
       state.productsWithFullInfo.totalCartPrice = action.payload.totalCartPrice;
       state.productsWithFullInfo.products = action.payload.products;
     });
