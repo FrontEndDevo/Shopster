@@ -7,6 +7,7 @@ import {
   type TCartItem,
 } from "./products.types";
 import { type TEmailAvailabilityStatus } from "./emailAvailability.types";
+import { type TOrdersList } from "./orders.types";
 import { isString } from "./guards";
 export {
   type TLoading,
@@ -16,6 +17,7 @@ export {
   type TProducts,
   type TProductsResponse,
   type TEmailAvailabilityStatus,
+  type TOrdersList,
   type TCartProduct,
   type TCartItem,
   isString,
