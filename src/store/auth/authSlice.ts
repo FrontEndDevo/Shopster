@@ -5,6 +5,7 @@ import actAuthLogin from "../actions/actAuthLogin";
 import type { TUser, TUserToken } from "@/types/auth.types";
 
 type TAuthState = {
+  userId: string | undefined;
   user: TUser | null;
   token: TUserToken;
   loading: TLoading;
@@ -12,6 +13,7 @@ type TAuthState = {
 };
 
 const initialState: TAuthState = {
+  userId: undefined,
   user: null,
   token: null,
   loading: "idle",
@@ -43,6 +45,7 @@ const authSlice = createSlice({
       state.error = null;
       state.token = action.payload.token;
       state.user = action.payload.user;
+      state.userId = action.payload.userId;
     });
     builder.addCase(actAuthRegister.rejected, (state, action) => {
       state.loading = "failed";
@@ -59,6 +62,7 @@ const authSlice = createSlice({
       state.error = null;
       state.token = action.payload.token;
       state.user = action.payload.user;
+      state.userId = action.payload.userId;
     });
     builder.addCase(actAuthLogin.rejected, (state, action) => {
       state.loading = "failed";
