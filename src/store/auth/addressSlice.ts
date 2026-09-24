@@ -2,6 +2,8 @@ import { isString, type TError, type TLoading } from "@/types";
 import type { TUserAddress } from "@/types/auth.types";
 import { createSlice } from "@reduxjs/toolkit";
 import actAddUserAddress from "../actions/actAddUserAddress";
+import actGetUserAddresses from "../actions/actGetUserAddresses";
+import { authLogout } from "./authSlice";
 
 type TAddressState = {
   shippingAddresses: TUserAddress[];
@@ -20,6 +22,7 @@ const addressSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    // Add user address:
     builder.addCase(actAddUserAddress.pending, (state) => {
       state.loading = "pending";
       state.error = null;
@@ -33,9 +36,31 @@ const addressSlice = createSlice({
       state.loading = "failed";
       if (isString(action.payload)) state.error = action.payload;
     });
+
+    // Get user addresses:
+    builder.addCase(actGetUserAddresses.pending, (state) => {
+      state.loading = "pending";
+      state.error = null;
+    });
+    builder.addCase(actGetUserAddresses.fulfilled, (state, action) => {
+      state.loading = "succeeded";
+      state.error = null;
+      state.shippingAddresses = action.payload;
+    });
+    builder.addCase(actGetUserAddresses.rejected, (state, action) => {
+      state.loading = "failed";
+      if (isString(action.payload)) state.error = action.payload;
+    });
+
+    // When logout:
+    builder.addCase(authLogout, (state) => {
+      state.loading = "idle";
+      state.error = null;
+      state.shippingAddresses = [];
+    });
   },
 });
 
-export { actAddUserAddress };
+export { actAddUserAddress, actGetUserAddresses };
 
 export default addressSlice.reducer;
