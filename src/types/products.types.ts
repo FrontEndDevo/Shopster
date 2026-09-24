@@ -27,6 +27,11 @@ export type TCartProduct = {
     quantity: number;
     imageCover: string;
     images: string[];
+    category?: {
+      image: string;
+      name: string;
+      slug: string;
+    };
   };
 };
 
