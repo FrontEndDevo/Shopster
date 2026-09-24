@@ -1,7 +1,7 @@
 import type { TCartProduct } from "@/types";
 import CartItem from "./CartItem";
 
-type TCartItemListProps = { products: TCartProduct[] };
+export type TCartItemListProps = { products: TCartProduct[] };
 
 const CartItemList = ({ products }: TCartItemListProps) => {
   return (

@@ -6,13 +6,13 @@ function CalcCartTotalPrice({ products }: TCartItemListProps) {
     (acc, el) => {
       const { finalPrice, finalDiscount } = CalcProductPriceAfterDiscount({
         price: el.price,
-        priceAfterDiscount: el.priceAfterDiscount,
+        priceAfterDiscount: el.product.priceAfterDiscount,
       });
 
-      if (el.amount && typeof el.amount === "number") {
+      if (el.count && typeof el.count === "number") {
         return {
-          totalPrices: acc.totalPrices + +finalPrice * el.amount,
-          totalDiscounts: acc.totalDiscounts + +finalDiscount * el.amount,
+          totalPrices: acc.totalPrices + +finalPrice * el.count,
+          totalDiscounts: acc.totalDiscounts + +finalDiscount * el.count,
         };
       } else {
         return {
