@@ -3,22 +3,11 @@ import CartItemList from "@/components/ecommerce/CartItem/CartItemList";
 import CartTotalPrice from "@/components/ecommerce/CartItem/CartTotalPrice";
 import Loading from "@/components/feedback/Loading";
 import { useCart } from "@/hooks";
-import { actClearUserCart } from "@/store/cart/cartSlice";
-import { useAppDispatch } from "@/store/hooks";
-import toast from "react-hot-toast";
 
 const Cart = () => {
-  const { productsWithFullInfo, loading, error } = useCart();
-  const dispatch = useAppDispatch();
+  const { productsWithFullInfo, loading, error, handleClearUserCart } =
+    useCart();
 
-  const handleClearUserCart = () => {
-    toast.promise(dispatch(actClearUserCart()).unwrap(), {
-      loading: "Clearing cart...",
-      success: "Cart cleared successfully.",
-      error: "Failed to clear cart.",
-    });
-    // .finally(() => setIsLoading(false));
-  };
   return (
     <div className="my-20 mx-auto max-w-3/4">
       <Heading title="Your cart" />
