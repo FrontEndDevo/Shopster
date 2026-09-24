@@ -1,8 +1,13 @@
 import type { TEmailAvailabilityStatus } from "@/types";
+import type { TUser } from "@/types/auth.types";
 import axios from "axios";
 import { useState } from "react";
 
 const USERS_API = import.meta.env.VITE_ECOMMERCE_API;
+
+type TUsersResponseForEmailCheck = {
+  users: TUser[];
+};
 
 function useCheckEmailAvailability() {
   const [enteredEmail, setEnteredEmail] = useState<string | null>(null);
@@ -15,7 +20,9 @@ function useCheckEmailAvailability() {
       // Checking...
       setEmailAvailabilityStatus("checking");
       // Sadly, this is the only endpoint I can use to access users.
-      const response = await axios.get(`${USERS_API}/users`);
+      const response = await axios.get<TUsersResponseForEmailCheck>(
+        `${USERS_API}/users`,
+      );
 
       // Check if the email input is already registered.
       const findEmail = await response.data.users.filter(
@@ -29,6 +36,7 @@ function useCheckEmailAvailability() {
       }
     } catch (error) {
       setEmailAvailabilityStatus("failed");
+      console.log(error);
     }
   };
 
