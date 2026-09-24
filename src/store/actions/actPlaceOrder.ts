@@ -2,7 +2,6 @@ import type { RootState } from "../redux";
 import axios from "axios";
 import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import type { TOrdersList } from "@/types/orders.types";
 
 const API_ORDERS = import.meta.env.VITE_ECOMMERCE_API_VERSION_2;
 
@@ -14,7 +13,7 @@ const actPlaceOrder = createAsyncThunk(
     const { cart, address, auth } = getState() as RootState;
 
     try {
-      const response = await axios.post<TOrdersList>(
+      const response = await axios.post(
         `${API_ORDERS}/orders/${cart.cartId}`,
         {
           shippingAddress: {
@@ -31,10 +30,7 @@ const actPlaceOrder = createAsyncThunk(
         },
       );
 
-      return {
-        data: response.data.data,
-        pricing: response.data.pricing,
-      };
+      return response.data.data;
     } catch (error) {
       return rejectWithValue(AxiosErrorHandler(error));
     }
