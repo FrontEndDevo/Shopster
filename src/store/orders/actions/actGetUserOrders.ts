@@ -15,11 +15,6 @@ const actGetUserOrders = createAsyncThunk(
     try {
       const response = await axios.get<TOrderData[]>(
         `${API_USER_ORDERS}/orders/user/${auth.userId}`,
-        {
-          headers: {
-            token: auth.token,
-          },
-        },
       );
 
       return response.data;
