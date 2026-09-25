@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/store/hooks";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Cart from "@/assets/cart.svg?react";
 import Wishlist from "@/assets/wishlist.svg?react";
 import Shopster from "@/assets/Shopster.svg?react";
@@ -7,7 +7,8 @@ import HeaderBadgeItem from "../feedback/HeaderBadgeItem";
 import { getTotalCartQuantitySelector } from "@/store/selectors";
 import ProfileDropdown from "../feedback/ProfileDropdown";
 
-import { Navbar, NavbarCollapse, NavbarToggle } from "flowbite-react";
+import { Navbar, NavbarToggle } from "flowbite-react";
+import Nav from "../ecommerce/Nav";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -17,9 +18,6 @@ const Header = () => {
   const totalProducts = useAppSelector(
     (state) => state.wishlist.productsIds.length,
   );
-
-  const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
-    isActive ? "text-amber-300 font-bold" : "text-white hover:text-amber-300";
 
   return (
     <header className="absolute top-0 left-0 z-50 w-full bg-transparent">
@@ -61,27 +59,7 @@ const Header = () => {
           </div>
         </div>
 
-        <NavbarCollapse className="w-full md:w-auto mt-4 md:mt-0">
-          <ul className="flex flex-col md:flex-row md:items-center md:gap-6 py-2 rounded-lg bg-gray-900/95 md:bg-transparent p-4 md:p-0 gap-3">
-            <NavLink className={getNavLinkClass} to="/">
-              Home
-            </NavLink>
-            <NavLink className={getNavLinkClass} to="/categories">
-              Categories
-            </NavLink>
-            <NavLink className={getNavLinkClass} to="/products">
-              Products
-            </NavLink>
-            <NavLink className={getNavLinkClass} to="/about">
-              About
-            </NavLink>
-
-            <li className="pt-2 border-t border-gray-700 md:hidden flex items-center justify-between">
-              <span className="text-sm text-gray-300">Account Settings</span>
-              <ProfileDropdown />
-            </li>
-          </ul>
-        </NavbarCollapse>
+        <Nav />
       </Navbar>
     </header>
   );
