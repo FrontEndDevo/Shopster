@@ -1,4 +1,7 @@
+// React Hooks:
 import { memo } from "react";
+
+// React Router Hooks:
 import { useNavigate } from "react-router-dom";
 
 type THeaderBadgeItemProps = {

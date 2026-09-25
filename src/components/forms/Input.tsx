@@ -1,5 +1,8 @@
-import type { TEmailAvailabilityStatus } from "@/types";
+// Validation:
 import type { FieldValues, Path, UseFormRegister } from "react-hook-form";
+
+// Types:
+import type { TEmailAvailabilityStatus } from "@/types";
 
 type TInputProps<TFieldValue extends FieldValues> = {
   label?: string;

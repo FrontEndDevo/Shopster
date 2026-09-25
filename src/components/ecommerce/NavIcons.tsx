@@ -1,10 +1,19 @@
-import Cart from "@/assets/cart.svg?react";
-import Wishlist from "@/assets/wishlist.svg?react";
-import HeaderBadgeItem from "../feedback/HeaderBadgeItem";
-import ProfileDropdown from "../feedback/ProfileDropdown";
+// Redux Hooks:
 import { useAppSelector } from "@/store/hooks";
+
+// Redux Actions:
 import { getTotalCartQuantitySelector } from "@/store/selectors";
+
+// Flowbite ui:
 import { NavbarToggle } from "flowbite-react";
+
+// Components:
+import ProfileDropdown from "../feedback/ProfileDropdown";
+import HeaderBadgeItem from "../feedback/HeaderBadgeItem";
+
+// Images:
+import Wishlist from "@/assets/wishlist.svg?react";
+import Cart from "@/assets/cart.svg?react";
 
 const NavIcons = () => {
   const { token } = useAppSelector((state) => state.auth);

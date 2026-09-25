@@ -1,5 +1,10 @@
+// React Hooks:
 import { useEffect } from "react";
+
+// Redux Hooks:
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+
+// Redux Actions:
 import { actGetCategories, clearCategories } from "@/store/categoriesSlice";
 
 function useCategories() {

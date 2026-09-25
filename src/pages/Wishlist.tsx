@@ -1,8 +1,11 @@
+// Custom Hooks:
+import { useWishlist } from "@/hooks";
+
+// Components:
 import Loading from "@/components/feedback/Loading";
 import RenderList from "@/components/common/RenderList";
 import Product from "@/components/ecommerce/Product";
 import Heading from "@/components/common/Heading";
-import { useWishlist } from "@/hooks";
 
 const Wishlist = () => {
   const { wishlistProducts, loading, error } = useWishlist();

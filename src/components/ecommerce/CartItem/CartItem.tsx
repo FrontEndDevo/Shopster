@@ -1,8 +1,14 @@
+// React Hooks:
 import { memo } from "react";
-// import CalcProductPriceAfterDiscount from "@/utils/CalcProductPriceAfterDiscount";
-import type { TCartProduct } from "@/types";
-import Remove from "@/assets/remove.svg?react";
+
+// Components:
 import useCartItem from "@/hooks/useCartItem";
+
+// Types:
+import type { TCartProduct } from "@/types";
+
+// Images:
+import Remove from "@/assets/remove.svg?react";
 
 const CartItem = memo(({ count, price, product }: TCartProduct) => {
   const {

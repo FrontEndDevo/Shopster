@@ -1,3 +1,4 @@
+// Types:
 import type { TError, TLoading } from "@/types";
 
 type LoadingProps = {

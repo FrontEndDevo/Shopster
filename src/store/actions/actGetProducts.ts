@@ -1,6 +1,11 @@
+// Axios:
 import axios from "axios";
 import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
+
+// Redux:
 import { createAsyncThunk } from "@reduxjs/toolkit";
+
+// Types:
 import type { TProductsResponse } from "@/types";
 
 const API_PRODUCTS_URL = import.meta.env.VITE_ECOMMERCE_API;

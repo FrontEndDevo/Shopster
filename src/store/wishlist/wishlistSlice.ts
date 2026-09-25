@@ -1,8 +1,13 @@
+// Redux:
 import { createSlice } from "@reduxjs/toolkit";
+
+// Redux Actions:
 import actWishlistToggle from "../actions/actWishlistToggle";
-import { isString, type TLoading, type TProducts } from "@/types";
 import actGetWishlist from "../actions/actGetWishlist";
 import { authLogout } from "../auth/authSlice";
+
+// Types:
+import { isString, type TLoading, type TProducts } from "@/types";
 
 type TWishlistSlice = {
   productsIds: number[];

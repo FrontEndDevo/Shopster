@@ -1,10 +1,24 @@
+// React Hooks:
 import { memo, useState } from "react";
+
+// Redux Hooks:
 import { useAppDispatch } from "@/store/hooks";
+
+// Redux Actions:
 import { actAddProductToCart } from "@/store/cart/cartSlice";
+
+// Types:
 import type { TProducts } from "@/types";
+
+// Utilities:
 import CalcProductPriceAfterDiscount from "@/utils/CalcProductPriceAfterDiscount";
+
+// Components:
 import FavoriteButton from "../feedback/FavoriteButton";
+
+// Toast:
 import toast from "react-hot-toast";
+
 const Product = memo(
   ({
     id,

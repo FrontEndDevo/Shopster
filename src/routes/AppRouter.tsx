@@ -1,5 +1,9 @@
+// React:
 import { lazy, Suspense } from "react";
+
+// React Router:
 import { Route, Routes } from "react-router-dom";
+
 const Home = lazy(() => import("@/pages/Home"));
 const Categories = lazy(() => import("@/pages/Categories"));
 const Products = lazy(() => import("@/pages/Products"));

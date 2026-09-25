@@ -1,5 +1,10 @@
-import { useAppSelector } from "@/store/hooks";
+// React Hooks:
 import React, { useEffect } from "react";
+
+// Redux Hooks:
+import { useAppSelector } from "@/store/hooks";
+
+// React Router Hooks:
 import { useNavigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {

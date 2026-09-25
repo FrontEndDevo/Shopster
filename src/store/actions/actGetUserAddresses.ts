@@ -1,6 +1,9 @@
-import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+// Axios:
 import axios from "axios";
+import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
+
+// Redux:
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { RootState } from "../redux";
 
 const ADDRESS_API = import.meta.env.VITE_ECOMMERCE_API;

@@ -1,5 +1,10 @@
+// Toaster:
 import { Toaster } from "react-hot-toast";
+
+// App Router
 import AppRouter from "@/routes/AppRouter";
+
+// Components:
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 

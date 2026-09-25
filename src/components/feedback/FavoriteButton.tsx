@@ -1,10 +1,21 @@
+// React Hooks:
 import { useState } from "react";
-import Favorite from "@/assets/favorite.svg?react";
+
+// Redux Hooks:
 import { useAppDispatch } from "@/store/hooks";
+
+// Redux Actions:
 import { actWishlistToggle } from "@/store/wishlist/wishlistSlice";
+
+// Components:
 import PopupModal from "./modals/PopupModal";
-import toast from "react-hot-toast";
 import Spinner from "./Spinner";
+
+// Toast:
+import toast from "react-hot-toast";
+
+// Images:
+import Favorite from "@/assets/favorite.svg?react";
 
 type TFavoriteButtonProps = {
   id: number;

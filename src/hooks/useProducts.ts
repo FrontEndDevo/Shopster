@@ -1,5 +1,10 @@
+// React Hooks:
 import { useEffect } from "react";
+
+// Redux Hooks:
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+
+// Redux Actions:
 import { actGetProducts, productsCleanUp } from "@/store/productsSlice";
 
 function useProducts() {

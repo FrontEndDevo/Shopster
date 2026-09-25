@@ -1,4 +1,7 @@
+// React Router Components:
 import { Link } from "react-router-dom";
+
+// Types:
 import type { TCategory } from "@/types/category.types";
 
 const Category = ({ name, image, slug }: TCategory) => {

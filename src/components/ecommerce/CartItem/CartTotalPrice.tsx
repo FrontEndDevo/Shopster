@@ -1,11 +1,22 @@
+// React Hooks:
 import { useEffect, useState } from "react";
-import type { TCartItem } from "@/types";
-import UserAddress from "@/components/forms/UserAddress";
+
+// React Router Hooks:
+import { useNavigate } from "react-router-dom";
+
+// Redux Hooks:
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+
+// Components:
+import UserAddress from "@/components/forms/UserAddress";
+
+// Redux Actions:
 import { actPlaceOrder, ordersInit } from "@/store/orders/ordersSlice";
 import { actClearUserCart } from "@/store/cart/cartSlice";
-import { useNavigate } from "react-router-dom";
 import actGetUserAddresses from "@/store/actions/actGetUserAddresses";
+
+// Types:
+import type { TCartItem } from "@/types";
 
 type TCartItemsProps = { productsFull: TCartItem };
 

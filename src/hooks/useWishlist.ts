@@ -1,6 +1,12 @@
+// React Hooks:
 import { useEffect } from "react";
+
+// Redux Hooks:
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+
+// Redux Actions:
 import { actGetWishlist, clearWishlist } from "@/store/wishlist/wishlistSlice";
+
 function useWishlist() {
   const dispatch = useAppDispatch();
   const { productsWithFullInfo, loading, error } = useAppSelector(

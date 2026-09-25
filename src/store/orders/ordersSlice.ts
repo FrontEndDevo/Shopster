@@ -1,7 +1,12 @@
-import { isString, type TError, type TLoading, type TOrderData } from "@/types";
+// Redux:
 import { createSlice } from "@reduxjs/toolkit";
+
+// Redux Actions:
 import actPlaceOrder from "../actions/actPlaceOrder";
 import actGetUserOrders from "./actions/actGetUserOrders";
+
+// Types:
+import { isString, type TError, type TLoading, type TOrderData } from "@/types";
 
 type TOrdersState = {
   ordersList: TOrderData[] | null;

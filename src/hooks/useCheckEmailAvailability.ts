@@ -1,7 +1,12 @@
+// React Hooks:
+import { useState } from "react";
+
+// Axios:
+import axios from "axios";
+
+// Types:
 import type { TEmailAvailabilityStatus } from "@/types";
 import type { TUser } from "@/types/auth.types";
-import axios from "axios";
-import { useState } from "react";
 
 const USERS_API = import.meta.env.VITE_ECOMMERCE_API;
 

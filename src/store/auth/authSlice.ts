@@ -1,8 +1,13 @@
-import { isString, type TError, type TLoading } from "@/types";
+// Redux:
 import { createSlice } from "@reduxjs/toolkit";
+
+// Redux Actions:
 import actAuthRegister from "../actions/actAuthRegister";
 import actAuthLogin from "../actions/actAuthLogin";
+
+// Types:
 import type { TUser, TUserToken } from "@/types/auth.types";
+import { isString, type TError, type TLoading } from "@/types";
 
 type TAuthState = {
   userId: string | undefined;

@@ -1,6 +1,12 @@
+// Redux:
 import { createSlice } from "@reduxjs/toolkit";
+
+// Redux Actions:
 import actGetCategories from "./actions/actGetCategories";
+
+// Types:
 import { isString, type TCategory, type TError, type TLoading } from "@/types/";
+
 type categoriesState = {
   records: TCategory[];
   loading: TLoading;

@@ -1,6 +1,9 @@
-import type { RootState } from "../redux";
+// Axios:
 import axios from "axios";
 import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
+
+// Redux:
+import type { RootState } from "../redux";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const API_ORDERS = import.meta.env.VITE_ECOMMERCE_API_VERSION_2;

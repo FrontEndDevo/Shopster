@@ -1,9 +1,14 @@
-import { isString, type TError, type TLoading } from "@/types";
-import type { TUserAddress } from "@/types/auth.types";
+// Redux:
 import { createSlice } from "@reduxjs/toolkit";
+
+// Redux Actions:
+import { authLogout } from "./authSlice";
 import actAddUserAddress from "../actions/actAddUserAddress";
 import actGetUserAddresses from "../actions/actGetUserAddresses";
-import { authLogout } from "./authSlice";
+
+// Types:
+import { isString, type TError, type TLoading } from "@/types";
+import type { TUserAddress } from "@/types/auth.types";
 
 type TAddressState = {
   shippingAddresses: TUserAddress[];

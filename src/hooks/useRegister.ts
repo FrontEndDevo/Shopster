@@ -1,14 +1,27 @@
+// React Hooks:
 import { useEffect } from "react";
+
+// React Router Hooks:
 import { useNavigate } from "react-router-dom";
+
+// Redux Actions:
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+
+// Redux Hooks:
 import { actAuthRegister, clearAuth } from "@/store/auth/authSlice";
+
+// Custom Hooks:
 import { useCheckEmailAvailability } from "@/hooks/";
+
+// Validation:
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   signUpSchema,
   type TRegistrationInputs,
 } from "@/validation/SignUpSchema";
+
+// Toast:
 import toast from "react-hot-toast";
 
 const useRegister = () => {

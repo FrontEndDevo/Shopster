@@ -1,4 +1,7 @@
+// Types:
 import { type TCartItemListProps } from "@/components/ecommerce/CartItem/CartItemList";
+
+// Utilities:
 import CalcProductPriceAfterDiscount from "./CalcProductPriceAfterDiscount";
 
 function CalcCartTotalPrice({ products }: TCartItemListProps) {

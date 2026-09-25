@@ -1,7 +1,10 @@
+// Components:
 import Heading from "@/components/common/Heading";
+import Loading from "@/components/feedback/Loading";
 import CartItemList from "@/components/ecommerce/CartItem/CartItemList";
 import CartTotalPrice from "@/components/ecommerce/CartItem/CartTotalPrice";
-import Loading from "@/components/feedback/Loading";
+
+// Custom Hooks:
 import { useCart } from "@/hooks";
 
 const Cart = () => {

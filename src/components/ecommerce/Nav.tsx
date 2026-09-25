@@ -1,6 +1,11 @@
-import ProfileDropdown from "../feedback/ProfileDropdown";
-import { NavbarCollapse } from "flowbite-react";
+// React Router Components:
 import { NavLink } from "react-router-dom";
+
+// Components:
+import ProfileDropdown from "../feedback/ProfileDropdown";
+
+// Flowbite ui:
+import { NavbarCollapse } from "flowbite-react";
 
 const Nav = () => {
   const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>

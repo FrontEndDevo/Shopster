@@ -1,4 +1,7 @@
+// React Hooks:
 import { createPortal } from "react-dom";
+
+// React Router Hooks:
 import { useNavigate } from "react-router-dom";
 
 const PopupModal = ({ closeModal }: { closeModal: () => void }) => {

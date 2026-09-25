@@ -1,7 +1,12 @@
-import type { RootState } from "@/store/redux";
-import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+// Axios:
 import axios from "axios";
+import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
+
+// Redux:
+import type { RootState } from "@/store/redux";
+
+// Types:
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const API_UPDATE_CART = import.meta.env.VITE_ECOMMERCE_API_VERSION_2;
 

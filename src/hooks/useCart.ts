@@ -1,7 +1,14 @@
+// React Hooks:
 import { useEffect } from "react";
+
+// Redux Hooks:
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+
+// Redux Actions:
 import { actGetLoggedUserCart } from "@/store/cart/cartSlice";
 import { actClearUserCart } from "@/store/cart/cartSlice";
+
+// Toast:
 import toast from "react-hot-toast";
 
 function useCart() {

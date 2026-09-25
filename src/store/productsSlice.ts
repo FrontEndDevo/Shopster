@@ -1,5 +1,10 @@
+// Redux:
 import { createSlice } from "@reduxjs/toolkit";
+
+// Types:
 import { isString, type TError, type TLoading, type TProducts } from "../types";
+
+// Redux Actions:
 import actGetProducts from "./actions/actGetProducts";
 
 type productsState = {

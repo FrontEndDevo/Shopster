@@ -1,13 +1,24 @@
+// Redux Hooks:
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+
+// Redux Actions:
 import { authLogout } from "@/store/auth/authSlice";
+
+// Flowbite ui:
 import {
   Dropdown,
   DropdownDivider,
   DropdownHeader,
   DropdownItem,
 } from "flowbite-react";
-import toast from "react-hot-toast";
+
+// React Router:
 import { Link, useNavigate } from "react-router-dom";
+
+// Toast:
+import toast from "react-hot-toast";
+
+// Images:
 import UserIcon from "@/assets/user.svg?react";
 
 const ProfileDropdown = () => {

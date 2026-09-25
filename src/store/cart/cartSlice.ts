@@ -1,11 +1,16 @@
+// Redux:
 import { createSlice } from "@reduxjs/toolkit";
-import { isString, type TError, type TLoading, type TCartItem } from "@/types";
 import { getTotalCartQuantitySelector } from "../selectors";
+
+// Redux Actions:
 import actAddProductToCart from "./actions/actAddProductToCart";
 import actGetLoggedUserCart from "./actions/actGetLoggedUserCart";
 import actClearUserCart from "./actions/actClearUserCart";
 import actRemoveProductFromCart from "./actions/actRemoveProductFromCart";
 import actUpdateCartProductQuantity from "./actions/actUpdateCartProductQuantity";
+
+// Types:
+import { isString, type TError, type TLoading, type TCartItem } from "@/types";
 
 interface ICartState {
   items: { [key: string]: number };

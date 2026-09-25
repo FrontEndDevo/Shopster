@@ -1,7 +1,14 @@
+// Axios:
 import axios from "axios";
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
+
+// Redux:
+import { createAsyncThunk } from "@reduxjs/toolkit";
+
+// Types:
 import type { TAuthSignUp, TUserResponse } from "@/types/auth.types";
+
+// Utilities:
 import TokenToId from "@/utils/TokenToId";
 
 const API_SIGNUP = import.meta.env.VITE_ECOMMERCE_API;

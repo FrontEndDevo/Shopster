@@ -1,4 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+
+// Components:
 import categories from "./categoriesSlice";
 import products from "./productsSlice";
 import cart from "./cart/cartSlice";
@@ -6,6 +8,7 @@ import wishlist from "./wishlist/wishlistSlice";
 import auth from "./auth/authSlice";
 import address from "./auth/addressSlice";
 import orders from "./orders/ordersSlice";
+
 import {
   persistReducer,
   FLUSH,

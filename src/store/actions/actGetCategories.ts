@@ -1,6 +1,11 @@
+// Axios:
 import axios from "axios";
 import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
+
+// Redux:
 import { createAsyncThunk } from "@reduxjs/toolkit";
+
+// Types:
 import type { TCategoryResponse } from "@/types/category.types";
 
 const API_CATEGORIES_URL = import.meta.env.VITE_ECOMMERCE_API;

@@ -1,9 +1,15 @@
+// React Router Hooks:
 import { useNavigate } from "react-router-dom";
-import Shopster from "@/assets/Shopster.svg?react";
 
+// Flowbite ui:
 import { Navbar } from "flowbite-react";
+
+// Components:
 import Nav from "../ecommerce/Nav";
+
+// Images:
 import NavIcons from "../ecommerce/NavIcons";
+import Shopster from "@/assets/Shopster.svg?react";
 
 const Header = () => {
   const navigate = useNavigate();

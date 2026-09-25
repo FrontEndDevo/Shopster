@@ -1,8 +1,13 @@
+// Axios:
 import axios from "axios";
 import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
+
+// Redux:
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import type { TProductsResponse } from "@/types";
 import type { RootState } from "../redux";
+
+// Types:
+import type { TProductsResponse } from "@/types";
 
 const WISHLISTAPI = import.meta.env.VITE_ECOMMERCE_API;
 

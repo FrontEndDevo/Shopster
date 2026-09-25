@@ -1,7 +1,14 @@
+// React Hooks:
 import { useEffect } from "react";
+
+// Redux Hooks:
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+
+// Redux Actions:
 import { actGetLoggedUserCart } from "@/store/cart/cartSlice";
 import { actGetWishlist } from "@/store/wishlist/wishlistSlice";
+
+// Images:
 import Hero from "../assets/images/hero.jpg";
 
 const Home = () => {

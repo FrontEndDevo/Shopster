@@ -1,8 +1,11 @@
+// Custom Hooks:
+import { useProducts } from "@/hooks";
+
+// Components:
 import Product from "@/components/ecommerce/Product";
 import Loading from "@/components/feedback/Loading";
 import RenderList from "@/components/common/RenderList";
 import Heading from "@/components/common/Heading";
-import { useProducts } from "@/hooks";
 
 const Products = () => {
   const { wishlistProducts, records, loading, error } = useProducts();

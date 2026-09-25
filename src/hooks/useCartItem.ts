@@ -1,9 +1,16 @@
+// Redux Hooks:
 import { useAppDispatch } from "@/store/hooks";
+
+// Redux Actions:
 import {
   actRemoveProductFromCart,
   actUpdateCartProductQuantity,
 } from "@/store/cart/cartSlice";
+
+// Toast:
 import toast from "react-hot-toast";
+
+// Types:
 import type { TCartProduct } from "@/types";
 
 const useCartItem = ({ count, price, product }: TCartProduct) => {

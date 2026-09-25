@@ -1,8 +1,11 @@
+// Custom Hooks:
+import { useCategories } from "@/hooks";
+
+// Components:
 import Category from "@/components/ecommerce/Category";
 import Loading from "@/components/feedback/Loading";
 import RenderList from "@/components/common/RenderList";
 import Heading from "@/components/common/Heading";
-import { useCategories } from "@/hooks";
 
 const Categories = () => {
   const { records, loading, error } = useCategories();

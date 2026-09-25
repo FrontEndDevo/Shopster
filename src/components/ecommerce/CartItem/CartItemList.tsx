@@ -1,5 +1,8 @@
-import type { TCartProduct } from "@/types";
+// Components:
 import CartItem from "./CartItem";
+
+// Types:
+import type { TCartProduct } from "@/types";
 
 export type TCartItemListProps = { products: TCartProduct[] };
 

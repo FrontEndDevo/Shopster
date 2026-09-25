@@ -1,7 +1,14 @@
-import Input from "@/components/forms/Input";
-import { useRegister } from "@/hooks";
-import registerIcon from "../assets/images/register-img.jpg";
+// React Router Components:
 import { Link } from "react-router-dom";
+
+// Custom Hooks:
+import { useRegister } from "@/hooks";
+
+// Components:
+import Input from "@/components/forms/Input";
+
+// Images:
+import registerIcon from "../assets/images/register-img.jpg";
 
 const Register = () => {
   const {

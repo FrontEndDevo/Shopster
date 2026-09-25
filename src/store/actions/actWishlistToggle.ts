@@ -1,7 +1,10 @@
+// Axios:
 import axios from "axios";
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import AxiosErrorHandler from "@/utils/AxiosErrorHandler";
+
+// Redux:
 import type { RootState } from "../redux";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
 type TWishlistProps = {
   id: number;
