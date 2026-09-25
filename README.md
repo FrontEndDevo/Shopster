@@ -6,7 +6,7 @@ A high-performance, responsive e-commerce web application built with **React 19*
 
 ## 🌐 Live Demo & Preview
 
-- **Live Application:** [shopster-weld.vercel.app](shopster-weld.vercel.app)
+- **Live Application:** [https://shopster-weld.vercel.app/](https://shopster-weld.vercel.app/)
 - **API Documentation:** Integrated with RouteMisr v2 E-Commerce API.
 
 ---
