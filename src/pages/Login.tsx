@@ -15,7 +15,7 @@ const Login = () => {
 
   return (
     <div className="bg-white relative h-screen w-full overflow-hidden flex flex-row-reverse items-center gap-10 justify-center lg:justify-start">
-      <div className="w-full max-w-md mr-20 xl:mr-20 2xl:mr-60 border-2 border-blue-300 border-dashed py-10 shadow-2xl px-6 rounded-3xl">
+      <div className="w-full max-w-md mx-4 lg:mr-20 xl:mr-20 2xl:mr-60 border-2 border-blue-300 border-dashed py-10 shadow-2xl px-6 rounded-3xl">
         <h2 className="text-neutral-800 font-bold text-4xl text-start mb-6">
           Sign in
         </h2>
